@@ -44,10 +44,24 @@ const formStatus = document.querySelector("#form-status");
 
 if (contactForm) {
   contactForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
-
     const formData = new FormData(contactForm);
     const submitButton = contactForm.querySelector('button[type="submit"]');
+
+    if (window.location.protocol === "file:") {
+      if (formStatus) {
+        formStatus.className = "form-status is-visible";
+        formStatus.textContent = "Submitting form...";
+      }
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending...";
+      }
+
+      return;
+    }
+
+    event.preventDefault();
 
     if (formStatus) {
       formStatus.className = "form-status is-visible";
