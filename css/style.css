@@ -42,10 +42,19 @@ a {
 .hero-section {
   min-height: 100vh;
   padding-bottom: 2rem;
+  padding-top: 5.5rem;
 }
 
 .portfolio-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   padding: 1rem 0;
+  background: rgba(15, 23, 32, 0.78);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .navbar-brand {
@@ -130,11 +139,20 @@ a {
   line-height: 1.8;
 }
 
+.hero-copy + .hero-copy {
+  margin-top: 0.8rem;
+}
+
+.hero-copy-soft {
+  max-width: 60ch;
+  color: rgba(245, 240, 232, 0.82);
+}
+
 .hero-actions {
   display: flex;
   gap: 0.9rem;
   flex-wrap: wrap;
-  margin: 1.45rem 0;
+  margin: 1.6rem 0;
 }
 
 .btn-primary {
