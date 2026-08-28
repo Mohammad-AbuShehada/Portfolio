@@ -2,7 +2,7 @@
 
 A modern, high-performance developer portfolio showcasing full-stack web applications, backend services, AI models, and engineering experience.
 
-🔗 **Live Demo:** [mohammad-abushehada.github.io/portfolio](https://mohammad-abushehada.github.io/portfolio/)
+🔗 **Live Demo:** [mohammad-abushehada.github.io/portfolio](https://mohammad-abushehada.github.io/Portfolio/)
 
 ---
 
