@@ -1,10 +1,20 @@
 /**
  * MOHAMMAD ABUSHEHADA — PORTFOLIO JAVASCRIPT
- * Interactive 0-100% Preloader + Enter Button, Smart Cursor with Labels, 3D Tilt Cards & Theme Toggle
+ * Interactive 0-100% Preloader + Enter Button, Smart Cursor with Labels, 3D Tilt Cards, Magnetic Buttons & Scroll Progress
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ─── 1. INTERACTIVE PRELOADER (0% -> 100% + ENTER BUTTON) ─────────
+  // ─── 1. SCROLL PROGRESS BAR ────────────────────────────────────
+  const progressBar = document.getElementById("scroll-progress-bar");
+  window.addEventListener("scroll", () => {
+    if (!progressBar) return;
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progressPercent = (scrollTop / (scrollHeight || 1)) * 100;
+    progressBar.style.width = `${Math.min(progressPercent, 100)}%`;
+  }, { passive: true });
+
+  // ─── 2. INTERACTIVE PRELOADER (0% -> 100% + ENTER BUTTON) ─────────
   const preloader = document.getElementById("site-preloader");
   const preloaderBar = document.getElementById("preloader-bar");
   const preloaderPercent = document.getElementById("preloader-percent");
@@ -20,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     heroReveals.forEach((el, index) => {
       setTimeout(() => {
         el.classList.add("is-visible");
-      }, index * 120);
+      }, index * 100);
     });
   }
 
@@ -40,12 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
             preloaderEnterBtn.classList.add("is-visible");
             preloaderEnterBtn.focus();
           }
-        }, 200);
+        }, 180);
       } else {
         preloaderBar.style.width = `${progress}%`;
         preloaderPercent.textContent = `${progress}%`;
       }
-    }, 24);
+    }, 22);
 
     if (preloaderEnterBtn) {
       preloaderEnterBtn.addEventListener("click", enterPortfolio);
@@ -59,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ─── 2. INTERACTIVE SMART CURSOR WITH LABELS ──────────────────────
+  // ─── 3. INTERACTIVE SMART CURSOR WITH LABELS ──────────────────────
   const cursorDot = document.getElementById("cursor-dot");
   const cursorRing = document.getElementById("cursor-ring");
   const cursorLabel = document.getElementById("cursor-label");
@@ -125,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ─── 3. 3D CARD TILT EFFECT (60fps Lightweight) ───────────────────
+  // ─── 4. 3D CARD TILT EFFECT (60fps Lightweight) ───────────────────
   const tiltCards = document.querySelectorAll(".js-tilt-card");
   if (window.matchMedia("(pointer: fine)").matches) {
     tiltCards.forEach((card) => {
@@ -136,10 +146,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
 
-        const rotateX = ((y - centerY) / centerY) * -7;
-        const rotateY = ((x - centerX) / centerX) * 7;
+        const rotateX = ((y - centerY) / centerY) * -6;
+        const rotateY = ((x - centerX) / centerX) * 6;
 
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
       });
 
       card.addEventListener("mouseleave", () => {
@@ -148,7 +158,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ─── 4. THEME SWITCHER (Dark / Light) ──────────────────────────
+  // ─── 5. MAGNETIC BUTTONS ATTRACTION ────────────────────────────
+  const magneticButtons = document.querySelectorAll(".js-magnetic-btn");
+  if (window.matchMedia("(pointer: fine)").matches) {
+    magneticButtons.forEach((btn) => {
+      btn.addEventListener("mousemove", (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - (rect.left + rect.width / 2);
+        const y = e.clientY - (rect.top + rect.height / 2);
+        btn.style.transform = `translate3d(${x * 0.22}px, ${y * 0.22}px, 0)`;
+      });
+
+      btn.addEventListener("mouseleave", () => {
+        btn.style.transform = "translate3d(0, 0, 0)";
+      });
+    });
+  }
+
+  // ─── 6. THEME SWITCHER (Dark / Light) ──────────────────────────
   const themeToggleBtn = document.getElementById("theme-toggle");
   const htmlRoot = document.documentElement;
 
@@ -184,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initTheme();
 
-  // ─── 5. MOUSE SPOTLIGHT GLOW ───────────────────────────────────
+  // ─── 7. MOUSE SPOTLIGHT GLOW ───────────────────────────────────
   const spotlight = document.getElementById("cursor-spotlight");
   if (spotlight && window.matchMedia("(pointer: fine)").matches) {
     let spotMouseX = window.innerWidth / 2;
@@ -216,7 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(renderSpotlight);
   }
 
-  // ─── 6. NAVBAR SCROLL & MOBILE CLOSE ───────────────────────────
+  // ─── 8. NAVBAR SCROLL & MOBILE CLOSE ───────────────────────────
   const navbar = document.getElementById("main-navbar");
   const navCollapse = document.getElementById("mainNav");
   const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
@@ -240,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ─── 7. INTERSECTION OBSERVER REVEALS ──────────────────────────
+  // ─── 9. INTERSECTION OBSERVER REVEALS ──────────────────────────
   const reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
     const revealObserver = new IntersectionObserver(
@@ -263,7 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
     reveals.forEach((item) => item.classList.add("is-visible"));
   }
 
-  // ─── 8. PROJECT CATEGORY FILTERING ────────────────────────────
+  // ─── 10. PROJECT CATEGORY FILTERING ────────────────────────────
   const filterTabs = document.querySelectorAll(".filter-tab");
   const projectItems = document.querySelectorAll(".project-item");
 
@@ -289,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ─── 9. CONTACT FORM ASYNC SUBMISSION ──────────────────────────
+  // ─── 11. CONTACT FORM ASYNC SUBMISSION ─────────────────────────
   const contactForm = document.getElementById("contact-form");
   const formStatus = document.getElementById("form-status");
 

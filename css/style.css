@@ -1,15 +1,15 @@
 /* ==========================================================================
    MOHAMMAD ABUSHEHADA — PORTFOLIO STYLES
-   Modern, High-Performance, Dual Theme (Dark / Light)
-   Interactive Preloader Button, 3D Tilt Cards, Smart Cursor & Clean Typography
+   High-End, Modern, Dual Theme (Dark / Light)
+   Crystal-Clear Typography (Inter & Plus Jakarta Sans), 3D Tilt & Progress Bar
    ========================================================================== */
 
 /* --- CSS Variables & Design Tokens --- */
 :root {
-  --bg: #0c1219;
+  --bg: #0b1118;
   --bg-subtle: #111a24;
-  --surface: rgba(18, 28, 40, 0.65);
-  --surface-strong: rgba(25, 39, 56, 0.85);
+  --surface: rgba(18, 28, 40, 0.7);
+  --surface-strong: rgba(25, 39, 56, 0.9);
   --surface-card: #131e2b;
   --text: #f5f0e8;
   --text-muted: #9ba8b8;
@@ -23,8 +23,8 @@
   --shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.45);
   --shadow-hover: 0 24px 48px -10px rgba(0, 0, 0, 0.65), 0 0 24px rgba(212, 163, 115, 0.18);
   
-  --font-display: "Space Grotesk", "Plus Jakarta Sans", -apple-system, sans-serif;
-  --font-body: "Plus Jakarta Sans", -apple-system, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", -apple-system, sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
   --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
@@ -38,8 +38,8 @@
 html.light {
   --bg: #f6f3ed;
   --bg-subtle: #ebe6dc;
-  --surface: rgba(255, 255, 255, 0.75);
-  --surface-strong: rgba(255, 255, 255, 0.95);
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-strong: rgba(255, 255, 255, 0.96);
   --surface-card: #ffffff;
   --text: #131920;
   --text-muted: #5e6b7a;
@@ -80,6 +80,7 @@ body {
   font-family: var(--font-body);
   font-size: 0.98rem;
   line-height: 1.7;
+  letter-spacing: 0;
   color: var(--text);
   background-color: var(--bg);
   min-height: 100vh;
@@ -102,6 +103,19 @@ img {
 ::selection {
   background: var(--accent);
   color: #0b1118;
+}
+
+/* --- Scroll Progress Bar --- */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent) 0%, #e8c49e 100%);
+  z-index: 10001;
+  pointer-events: none;
+  transition: width 0.08s ease;
 }
 
 /* --- Interactive Preloader & Experience Enter --- */
@@ -186,7 +200,7 @@ img {
   font-weight: 700;
 }
 
-/* Enter Experience Button (at 100%) */
+/* Enter Experience Button */
 .preloader-enter-btn {
   display: none;
   margin-top: 1.2rem;
@@ -219,7 +233,7 @@ img {
   100% { box-shadow: 0 8px 28px rgba(212, 163, 115, 0.65); transform: translateY(-2px); }
 }
 
-/* --- Interactive Custom Cursor with Smart Label --- */
+/* --- Interactive Custom Cursor --- */
 .cursor-dot {
   position: fixed;
   top: 0;
@@ -248,7 +262,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: width 0.3s var(--ease-smooth), height 0.3s var(--ease-smooth), background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease, border-radius 0.3s ease;
+  transition: width 0.3s var(--ease-smooth), height 0.3s var(--ease-smooth), background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
 }
 
 .cursor-label {
@@ -337,7 +351,7 @@ html.light .cursor-spotlight {
 
 .portfolio-nav {
   padding: 0.95rem 0;
-  background: rgba(12, 18, 25, 0.82);
+  background: rgba(12, 18, 25, 0.84);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--line);
@@ -345,7 +359,7 @@ html.light .cursor-spotlight {
 }
 
 html.light .portfolio-nav {
-  background: rgba(246, 243, 237, 0.86);
+  background: rgba(246, 243, 237, 0.88);
 }
 
 .portfolio-nav.scrolled {
@@ -359,9 +373,8 @@ html.light .portfolio-nav {
   gap: 0.75rem;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.18rem;
+  font-size: 1.16rem;
   color: var(--text);
-  letter-spacing: -0.01em;
 }
 
 .brand-logo {
@@ -506,10 +519,10 @@ html.light .navbar-toggler-icon {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2.35rem, 4.4vw, 3.6rem);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.3rem, 4.2vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
   margin-bottom: 1.25rem;
   color: var(--text);
 }
@@ -620,7 +633,7 @@ html.light .gradient-text {
 /* 3D Tilt Card Component */
 .js-tilt-card {
   transform-style: preserve-3d;
-  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
   will-change: transform;
 }
 
@@ -734,10 +747,10 @@ html.light .portrait-badge {
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.025em;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
   color: var(--text);
   margin-bottom: 0.75rem;
 }
@@ -817,7 +830,6 @@ html.light .portrait-badge {
 }
 
 .info-card:hover {
-  transform: translateX(4px);
   border-color: var(--accent-border);
 }
 
@@ -906,7 +918,6 @@ html.light .portrait-badge {
 }
 
 .timeline-card:hover {
-  transform: translateY(-3px);
   border-color: var(--accent-border);
 }
 
@@ -1073,7 +1084,6 @@ html.light .portrait-badge {
   font-weight: 700;
   color: var(--text);
   margin-bottom: 0.6rem;
-  letter-spacing: -0.015em;
 }
 
 .project-description {
@@ -1280,7 +1290,6 @@ html.light .project-features-list span {
   font-weight: 700;
   color: var(--text);
   margin-bottom: 0.35rem;
-  letter-spacing: -0.015em;
 }
 
 .degree-institution {
@@ -1333,7 +1342,6 @@ html.light .project-features-list span {
 }
 
 .cert-item:hover {
-  transform: translateX(4px);
   border-color: var(--accent-border);
 }
 
@@ -1390,11 +1398,10 @@ html.light .project-features-list span {
 
 .contact-title {
   font-family: var(--font-display);
-  font-size: clamp(1.85rem, 3.2vw, 2.7rem);
-  font-weight: 700;
+  font-size: clamp(1.85rem, 3.2vw, 2.6rem);
+  font-weight: 800;
   color: var(--text);
   margin-bottom: 0.75rem;
-  letter-spacing: -0.02em;
 }
 
 .contact-subtitle {
@@ -1405,28 +1412,29 @@ html.light .project-features-list span {
   line-height: 1.75;
 }
 
+/* Spacious, Well-Formatted Contact Cards Grid (2x2 on desktop, clean full width on mobile) */
 .contact-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 0.9rem;
-  max-width: 940px;
-  margin: 0 auto 2.6rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  max-width: 880px;
+  margin: 0 auto 2.8rem;
 }
 
 .contact-direct-card {
   display: flex;
   align-items: center;
-  gap: 0.95rem;
-  padding: 0.95rem 1.15rem;
+  gap: 1.2rem;
+  padding: 1.2rem 1.6rem;
   border-radius: var(--radius-md);
   background: var(--surface);
   border: 1px solid var(--line);
   text-align: left;
   transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  overflow: hidden;
 }
 
 .contact-direct-card:hover {
-  transform: translateY(-3px);
   border-color: var(--accent-border);
   background: var(--surface-strong);
 }
@@ -1435,12 +1443,18 @@ html.light .project-features-list span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
   background: var(--accent-soft);
   color: var(--accent);
   flex-shrink: 0;
+}
+
+.direct-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .direct-label {
@@ -1449,15 +1463,24 @@ html.light .project-features-list span {
   font-size: 0.74rem;
   text-transform: uppercase;
   color: var(--accent);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
 }
 
 .direct-value {
   display: block;
-  font-size: 0.88rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text);
-  word-break: break-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.direct-value.email-value {
+  font-size: 0.96rem;
+  letter-spacing: -0.01em;
 }
 
 .contact-form-modern {
@@ -1658,5 +1681,6 @@ html.light .project-features-list span {
 
   .contact-cards-grid {
     grid-template-columns: 1fr;
+    gap: 0.9rem;
   }
 }
