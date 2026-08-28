@@ -391,4 +391,150 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // ─── 12. HERO CONSTELLATION INTERACTIVE CANVAS ─────────────────
+  const canvas = document.getElementById("hero-particle-canvas");
+  if (canvas) {
+    const ctx = canvas.getContext("2d");
+    let width = (canvas.width = canvas.parentElement.offsetWidth);
+    let height = (canvas.height = canvas.parentElement.offsetHeight);
+
+    const particles = [];
+    const particleCount = window.innerWidth < 768 ? 22 : 45;
+    const maxDistance = 120;
+    let mousePos = { x: null, y: null };
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.6;
+        this.vy = (Math.random() - 0.5) * 0.6;
+        this.radius = Math.random() * 1.8 + 1;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+
+        // Mouse repulsion
+        if (mousePos.x !== null && mousePos.y !== null) {
+          const dx = mousePos.x - this.x;
+          const dy = mousePos.y - this.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 100) {
+            const force = (100 - dist) / 100;
+            this.x -= (dx / dist) * force * 1.5;
+            this.y -= (dy / dist) * force * 1.5;
+          }
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(212, 163, 115, 0.6)";
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.hypot(dx, dy);
+
+          if (dist < maxDistance) {
+            const alpha = (1 - dist / maxDistance) * 0.35;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(212, 163, 115, ${alpha})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(animateParticles);
+    }
+
+    window.addEventListener("resize", () => {
+      if (canvas.parentElement) {
+        width = canvas.width = canvas.parentElement.offsetWidth;
+        height = canvas.height = canvas.parentElement.offsetHeight;
+      }
+    });
+
+    canvas.parentElement.addEventListener("mousemove", (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mousePos.x = e.clientX - rect.left;
+      mousePos.y = e.clientY - rect.top;
+    });
+
+    canvas.parentElement.addEventListener("mouseleave", () => {
+      mousePos.x = null;
+      mousePos.y = null;
+    });
+
+    animateParticles();
+  }
+
+  // ─── 13. FLOATING BACK TO TOP WITH PROGRESS RING ───────────────
+  const backToTopBtn = document.getElementById("back-to-top-btn");
+  const progressCircle = document.getElementById("progress-ring-circle");
+  const circumference = 2 * Math.PI * 20; // 125.66
+
+  if (backToTopBtn && progressCircle) {
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progressPercent = Math.min((scrollTop / (scrollHeight || 1)) * 100, 100);
+
+      // Update ring offset
+      const offset = circumference - (circumference * progressPercent) / 100;
+      progressCircle.style.strokeDashoffset = `${offset}`;
+
+      // Toggle button visibility
+      if (scrollTop > 280) {
+        backToTopBtn.classList.add("is-visible");
+      } else {
+        backToTopBtn.classList.remove("is-visible");
+      }
+    }, { passive: true });
+
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  // ─── 14. NAVBAR SCROLLSPY ACTIVE LINK ──────────────────────────
+  const sections = document.querySelectorAll("section[id]");
+  window.addEventListener("scroll", () => {
+    const scrollY = window.pageYOffset;
+    sections.forEach((current) => {
+      const sectionHeight = current.offsetHeight;
+      const sectionTop = current.offsetTop - 120;
+      const sectionId = current.getAttribute("id");
+      const navLink = document.querySelector(`.navbar-nav a[href*="${sectionId}"]`);
+
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        navLinks.forEach((link) => link.classList.remove("active"));
+        if (navLink) navLink.classList.add("active");
+      }
+    });
+  }, { passive: true });
 });

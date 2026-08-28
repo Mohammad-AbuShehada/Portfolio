@@ -1748,3 +1748,131 @@ html.light .project-features-list span {
     gap: 0.9rem;
   }
 }
+
+/* --- Hero Constellation Canvas --- */
+.hero-particle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.65;
+}
+
+html.light .hero-particle-canvas {
+  opacity: 0.45;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Brand Logo Image in Navbar & Preloader */
+.brand-logo {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0;
+}
+
+.brand-logo img {
+  display: block;
+  border-radius: 9px;
+  filter: drop-shadow(0 2px 8px rgba(212, 163, 115, 0.35));
+}
+
+.preloader-logo {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.preloader-logo img {
+  display: block;
+  border-radius: 12px;
+  filter: drop-shadow(0 6px 20px rgba(212, 163, 115, 0.5));
+}
+
+/* --- Back-to-Top Floating Button with Circular Progress Ring --- */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--surface-strong);
+  border: 1px solid var(--line-strong);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 990;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px) scale(0.9);
+  transition: opacity 0.35s var(--ease-smooth), transform 0.35s var(--ease-smooth), visibility 0.35s, background-color 0.25s, border-color 0.25s;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0;
+}
+
+.back-to-top-btn.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.back-to-top-btn:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent-hover);
+  box-shadow: 0 12px 36px rgba(212, 163, 115, 0.3);
+}
+
+.progress-ring {
+  position: absolute;
+  inset: 1px;
+  width: 44px;
+  height: 44px;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+.progress-ring-bg {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 2.5;
+}
+
+.progress-ring-circle {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 125.6; /* 2 * PI * 20 */
+  stroke-dashoffset: 125.6;
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+.arrow-up-icon {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.25s var(--ease-smooth);
+}
+
+.back-to-top-btn:hover .arrow-up-icon {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 767.98px) {
+  .back-to-top-btn {
+    bottom: 1.3rem;
+    right: 1.3rem;
+    width: 44px;
+    height: 44px;
+  }
+}
+
