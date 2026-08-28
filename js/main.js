@@ -392,105 +392,240 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ─── 12. HERO CONSTELLATION INTERACTIVE CANVAS ─────────────────
+  // ─── 12. INTERACTIVE 3D HOLOGRAPHIC GEOMETRY ENGINE (60fps) ────
   const canvas = document.getElementById("hero-particle-canvas");
   if (canvas) {
     const ctx = canvas.getContext("2d");
     let width = (canvas.width = canvas.parentElement.offsetWidth);
     let height = (canvas.height = canvas.parentElement.offsetHeight);
 
-    const particles = [];
-    const particleCount = window.innerWidth < 768 ? 22 : 45;
-    const maxDistance = 120;
-    let mousePos = { x: null, y: null };
+    // 3D Geometry: Golden Icosahedron + Orbiting Satellites
+    const phi = (1 + Math.sqrt(5)) / 2;
+    const baseVertices = [
+      [-1, phi, 0], [1, phi, 0], [-1, -phi, 0], [1, -phi, 0],
+      [0, -1, phi], [0, 1, phi], [0, -1, -phi], [0, 1, -phi],
+      [phi, 0, -1], [phi, 0, 1], [-phi, 0, -1], [-phi, 0, 1]
+    ];
 
-    class Particle {
-      constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.6;
-        this.vy = (Math.random() - 0.5) * 0.6;
-        this.radius = Math.random() * 1.8 + 1;
-      }
+    const edges = [
+      [0, 11], [0, 5], [0, 1], [0, 7], [0, 10],
+      [1, 5], [1, 9], [1, 8], [1, 7],
+      [2, 11], [2, 4], [2, 3], [2, 6], [2, 10],
+      [3, 4], [3, 9], [3, 8], [3, 6],
+      [4, 5], [4, 9], [4, 11],
+      [5, 9], [5, 11],
+      [6, 7], [6, 8], [6, 10],
+      [7, 8], [7, 10],
+      [8, 9],
+      [10, 11]
+    ];
 
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
+    // Scale vertices
+    const radius = Math.min(width, height) * (window.innerWidth < 768 ? 0.28 : 0.22);
+    const vertices = baseVertices.map(([x, y, z]) => {
+      const len = Math.hypot(x, y, z);
+      return { x: (x / len) * radius, y: (y / len) * radius, z: (z / len) * radius };
+    });
 
-        if (this.x < 0 || this.x > width) this.vx *= -1;
-        if (this.y < 0 || this.y > height) this.vy *= -1;
-
-        // Mouse repulsion
-        if (mousePos.x !== null && mousePos.y !== null) {
-          const dx = mousePos.x - this.x;
-          const dy = mousePos.y - this.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < 100) {
-            const force = (100 - dist) / 100;
-            this.x -= (dx / dist) * force * 1.5;
-            this.y -= (dy / dist) * force * 1.5;
-          }
-        }
-      }
-
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(212, 163, 115, 0.6)";
-        ctx.fill();
-      }
+    // Add orbital 3D satellites
+    const satelliteCount = window.innerWidth < 768 ? 16 : 28;
+    const satellites = [];
+    for (let i = 0; i < satelliteCount; i++) {
+      const theta = Math.random() * Math.PI * 2;
+      const phiAngle = (Math.random() - 0.5) * Math.PI;
+      const dist = radius * (1.2 + Math.random() * 0.9);
+      satellites.push({
+        x: dist * Math.cos(phiAngle) * Math.cos(theta),
+        y: dist * Math.sin(phiAngle),
+        z: dist * Math.cos(phiAngle) * Math.sin(theta),
+        speed: (Math.random() * 0.006 + 0.003) * (Math.random() > 0.5 ? 1 : -1),
+        orbitRadius: dist
+      });
     }
 
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
+    // 3D Rotation State & Inertia
+    let rotX = 0.3;
+    let rotY = 0.4;
+    let velX = 0.003;
+    let velY = 0.005;
+    let isDragging = false;
+    let lastMouseX = 0;
+    let lastMouseY = 0;
+    let shockwave = 0;
+
+    function rotate3D(v, rx, ry) {
+      // Rotate around X
+      const cosX = Math.cos(rx), sinX = Math.sin(rx);
+      const y1 = v.y * cosX - v.z * sinX;
+      const z1 = v.y * sinX + v.z * cosX;
+
+      // Rotate around Y
+      const cosY = Math.cos(ry), sinY = Math.sin(ry);
+      const x2 = v.x * cosY + z1 * sinY;
+      const z2 = -v.x * sinY + z1 * cosY;
+
+      return { x: x2, y: y1, z: z2 };
     }
 
-    function animateParticles() {
+    function project3D(v, cx, cy) {
+      const fov = 450;
+      const zOffset = 380;
+      const scale = fov / (fov + v.z + zOffset);
+      return {
+        x: cx + v.x * scale,
+        y: cy + v.y * scale,
+        scale: scale,
+        z: v.z
+      };
+    }
+
+    function render3D() {
       ctx.clearRect(0, 0, width, height);
 
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
+      // Center of 3D universe: positioned towards the right side on desktop
+      const cx = window.innerWidth < 992 ? width * 0.5 : width * 0.68;
+      const cy = height * 0.5;
 
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.hypot(dx, dy);
-
-          if (dist < maxDistance) {
-            const alpha = (1 - dist / maxDistance) * 0.35;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(212, 163, 115, ${alpha})`;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-          }
-        }
+      // Inertia update
+      if (!isDragging) {
+        rotX += velX;
+        rotY += velY;
+        velX *= 0.98;
+        velY *= 0.98;
+        if (Math.abs(velX) < 0.002) velX = 0.002;
+        if (Math.abs(velY) < 0.003) velY = 0.003;
       }
 
-      requestAnimationFrame(animateParticles);
+      // Decay shockwave
+      if (shockwave > 0) shockwave *= 0.94;
+
+      // Rotate and Project Core Vertices
+      const projected = vertices.map(v => {
+        const pulse = 1 + shockwave * 0.25;
+        const expanded = { x: v.x * pulse, y: v.y * pulse, z: v.z * pulse };
+        const rotated = rotate3D(expanded, rotX, rotY);
+        return project3D(rotated, cx, cy);
+      });
+
+      // Draw Core 3D Edges with Depth Shading
+      edges.forEach(([i, j]) => {
+        const p1 = projected[i];
+        const p2 = projected[j];
+        const avgZ = (p1.z + p2.z) / 2;
+        const alpha = Math.max(0.08, Math.min(0.55, 0.32 + avgZ / (radius * 3)));
+
+        ctx.beginPath();
+        ctx.moveTo(p1.x, p1.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.strokeStyle = `rgba(212, 163, 115, ${alpha})`;
+        ctx.lineWidth = Math.max(0.6, (p1.scale + p2.scale) * 0.85);
+        ctx.stroke();
+      });
+
+      // Draw Core 3D Vertices
+      projected.forEach(p => {
+        const nodeAlpha = Math.max(0.2, Math.min(0.9, 0.5 + p.z / (radius * 2)));
+        const nodeSize = Math.max(1.8, 3.2 * p.scale);
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, nodeSize, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(212, 163, 115, ${nodeAlpha})`;
+        ctx.fill();
+
+        // Subtle glow on closer vertices
+        if (p.z > 0) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, nodeSize * 2.2, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(212, 163, 115, ${nodeAlpha * 0.22})`;
+          ctx.fill();
+        }
+      });
+
+      // Orbit and Draw 3D Satellites
+      satellites.forEach(s => {
+        // Orbital drift
+        const cosS = Math.cos(s.speed);
+        const sinS = Math.sin(s.speed);
+        const nextX = s.x * cosS - s.z * sinS;
+        const nextZ = s.x * sinS + s.z * cosS;
+        s.x = nextX;
+        s.z = nextZ;
+
+        const rotated = rotate3D(s, rotX * 0.8, rotY * 0.8);
+        const p = project3D(rotated, cx, cy);
+        const alpha = Math.max(0.1, Math.min(0.7, 0.4 + p.z / (radius * 3)));
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, Math.max(1, 2 * p.scale), 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(226, 183, 141, ${alpha})`;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(render3D);
     }
 
+    // 3D Drag & Touch Controls
+    const heroSection = canvas.parentElement;
+    heroSection.addEventListener("mousedown", (e) => {
+      isDragging = true;
+      lastMouseX = e.clientX;
+      lastMouseY = e.clientY;
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+      const dx = e.clientX - lastMouseX;
+      const dy = e.clientY - lastMouseY;
+      rotY += dx * 0.008;
+      rotX += dy * 0.008;
+      velY = dx * 0.004;
+      velX = dy * 0.004;
+      lastMouseX = e.clientX;
+      lastMouseY = e.clientY;
+    });
+
+    window.addEventListener("mouseup", () => {
+      isDragging = false;
+    });
+
+    // Touch support for mobile
+    heroSection.addEventListener("touchstart", (e) => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        lastMouseX = e.touches[0].clientX;
+        lastMouseY = e.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    window.addEventListener("touchmove", (e) => {
+      if (!isDragging || e.touches.length !== 1) return;
+      const dx = e.touches[0].clientX - lastMouseX;
+      const dy = e.touches[0].clientY - lastMouseY;
+      rotY += dx * 0.008;
+      rotX += dy * 0.008;
+      velY = dx * 0.004;
+      velX = dy * 0.004;
+      lastMouseX = e.touches[0].clientX;
+      lastMouseY = e.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener("touchend", () => {
+      isDragging = false;
+    });
+
+    // Click / Tap 3D Pulse
+    heroSection.addEventListener("click", () => {
+      shockwave = 1.0;
+    });
+
     window.addEventListener("resize", () => {
-      if (canvas.parentElement) {
-        width = canvas.width = canvas.parentElement.offsetWidth;
-        height = canvas.height = canvas.parentElement.offsetHeight;
+      if (heroSection) {
+        width = canvas.width = heroSection.offsetWidth;
+        height = canvas.height = heroSection.offsetHeight;
       }
     });
 
-    canvas.parentElement.addEventListener("mousemove", (e) => {
-      const rect = canvas.getBoundingClientRect();
-      mousePos.x = e.clientX - rect.left;
-      mousePos.y = e.clientY - rect.top;
-    });
-
-    canvas.parentElement.addEventListener("mouseleave", () => {
-      mousePos.x = null;
-      mousePos.y = null;
-    });
-
-    animateParticles();
+    render3D();
   }
 
   // ─── 13. FLOATING BACK TO TOP WITH PROGRESS RING ───────────────
@@ -537,54 +672,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }, { passive: true });
-
-  // ─── 15. LIVE METRICS COUNTER (0 -> 100%) ──────────────────────
-  const counterElements = document.querySelectorAll(".js-counter");
-  const fillElements = document.querySelectorAll(".metric-fill");
-
-  function animateCounters() {
-    counterElements.forEach((counter) => {
-      const target = parseInt(counter.dataset.target, 10) || 100;
-      let current = 0;
-      const duration = 1200;
-      const stepTime = 16;
-      const totalSteps = duration / stepTime;
-      const increment = target / totalSteps;
-
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-          counter.textContent = target;
-          clearInterval(timer);
-        } else {
-          counter.textContent = Math.floor(current);
-        }
-      }, stepTime);
-    });
-
-    fillElements.forEach((fill) => {
-      const width = fill.dataset.width || "100%";
-      fill.style.width = width;
-    });
-  }
-
-  const metricsStrip = document.querySelector(".interactive-metrics-strip");
-  if (metricsStrip && "IntersectionObserver" in window) {
-    let triggered = false;
-    const metricsObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !triggered) {
-            triggered = true;
-            animateCounters();
-            metricsObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-    metricsObserver.observe(metricsStrip);
-  } else {
-    animateCounters();
-  }
 });
