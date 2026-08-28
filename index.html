@@ -169,6 +169,15 @@
                   <span class="badge-tech">React &bull; ASP.NET Core</span>
                 </div>
               </div>
+              <!-- 3D Floating Glass Badges -->
+              <div class="floating-3d-badge badge-top-left">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                <span>Fast & Reliable</span>
+              </div>
+              <div class="floating-3d-badge badge-bottom-right">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                <span>Clean Architecture</span>
+              </div>
             </div>
           </div>
         </div>
@@ -392,19 +401,19 @@
                 </div>
                 <h3 class="project-name">Log Ingestion & Query Service</h3>
                 <p class="project-description">
-                  High-throughput backend service in ASP.NET Core for structured log ingestion and fast analytical queries, supporting rich metadata filters and timestamp range searches.
+                  Production-oriented TypeScript service for structured log ingestion, cursor-paginated queries, time-bucketed aggregation, and retention cleanup — a compact PostgreSQL-backed alternative to Datadog or Grafana Loki.
                 </p>
                 <div class="project-features-list">
-                  <span>Structured Ingestion</span>
-                  <span>Analytical Filters</span>
-                  <span>High Concurrency</span>
-                  <span>REST API Design</span>
+                  <span>Batch Ingestion</span>
+                  <span>Cursor Pagination</span>
+                  <span>Time Aggregation</span>
+                  <span>Docker Compose</span>
                 </div>
                 <div class="project-tech-stack">
-                  <span class="tech-pill">C#</span>
-                  <span class="tech-pill">ASP.NET Core</span>
-                  <span class="tech-pill">REST APIs</span>
-                  <span class="tech-pill">LINQ</span>
+                  <span class="tech-pill">TypeScript</span>
+                  <span class="tech-pill">Fastify</span>
+                  <span class="tech-pill">PostgreSQL</span>
+                  <span class="tech-pill">Docker</span>
                 </div>
                 <div class="project-footer">
                   <a class="btn-project btn-secondary" href="https://github.com/Mohammad-AbuShehada/log-ingestion-query-service" target="_blank" rel="noreferrer">
@@ -417,30 +426,33 @@
 
             <!-- Project 3: Handwritten Digit CNN (AI / ML) -->
             <div class="col-lg-6 project-item" data-category="ai">
-              <article class="project-card h-100 js-tilt-card" data-cursor="Code">
+              <article class="project-card h-100 js-tilt-card" data-cursor="Open">
                 <div class="card-top">
                   <span class="project-category-tag tag-ai">AI & Deep Learning</span>
                 </div>
-                <h3 class="project-name">Handwritten Digit Recognition CNN</h3>
+                <h3 class="project-name">Handwritten Digit Recognition</h3>
                 <p class="project-description">
-                  Convolutional Neural Network built with PyTorch for MNIST handwritten digit recognition, featuring data pipeline preprocessing, training optimization, and model evaluation.
+                  CNN model trained on MNIST with PyTorch for digit classification. Includes a Streamlit web app where users can draw or upload digits for real-time prediction, deployed live on Hugging Face Spaces.
                 </p>
                 <div class="project-features-list">
-                  <span>PyTorch Architecture</span>
-                  <span>MNIST Benchmark</span>
-                  <span>Data Augmentation</span>
-                  <span>Accuracy Metrics</span>
+                  <span>CNN Classifier</span>
+                  <span>Streamlit UI</span>
+                  <span>Draw & Upload</span>
+                  <span>Hugging Face Deploy</span>
                 </div>
                 <div class="project-tech-stack">
-                  <span class="tech-pill">PyTorch</span>
                   <span class="tech-pill">Python</span>
-                  <span class="tech-pill">CNN</span>
-                  <span class="tech-pill">Deep Learning</span>
+                  <span class="tech-pill">PyTorch</span>
+                  <span class="tech-pill">Streamlit</span>
+                  <span class="tech-pill">Hugging Face</span>
                 </div>
                 <div class="project-footer">
-                  <a class="btn-project btn-secondary" href="https://github.com/Mohammad-AbuShehada/handwritten-digit-cnn-pytorch" target="_blank" rel="noreferrer">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                    <span>View GitHub Repo</span>
+                  <a class="btn-project btn-primary-custom" href="https://huggingface.co/spaces/mohammad147/handwritten-digit-cnn" target="_blank" rel="noreferrer">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    <span>Live Demo</span>
+                  </a>
+                  <a class="btn-project btn-ghost-link" href="https://github.com/Mohammad-AbuShehada/handwritten-digit-cnn-pytorch" target="_blank" rel="noreferrer">
+                    <span>GitHub</span>
                   </a>
                 </div>
               </article>

@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ─── 4. 3D CARD TILT EFFECT (60fps Lightweight) ───────────────────
+  // ─── 4. 3D CARD TILT & DYNAMIC LIGHT EFFECT (60fps) ─────────────
   const tiltCards = document.querySelectorAll(".js-tilt-card");
   if (window.matchMedia("(pointer: fine)").matches) {
     tiltCards.forEach((card) => {
@@ -149,6 +149,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const rotateX = ((y - centerY) / centerY) * -6;
         const rotateY = ((x - centerX) / centerX) * 6;
 
+        card.style.setProperty("--mouse-x", `${x}px`);
+        card.style.setProperty("--mouse-y", `${y}px`);
         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
       });
 

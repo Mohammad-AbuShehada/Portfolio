@@ -34,8 +34,8 @@ A modern, high-performance developer portfolio showcasing full-stack web applica
 | Project | Domain | Key Technologies | Demo / Code |
 | :--- | :--- | :--- | :--- |
 | **Course Points Management System** | Full-Stack | React, ASP.NET Core, PostgreSQL, Neon, Zustand, JWT | [Watch Demo](https://www.linkedin.com/posts/mohammad-abushehada_softwareengineering-webdevelopment-aspnet-activity-7474705874331025408-t-xp) |
-| **Log Ingestion & Query Service** | Backend | C#, ASP.NET Core, REST APIs, LINQ, In-Memory Engine | [GitHub Repo](https://github.com/Mohammad-AbuShehada/log-ingestion-query-service) |
-| **Handwritten Digit Recognition CNN** | AI / ML | PyTorch, Python, CNN, Computer Vision, Deep Learning | [GitHub Repo](https://github.com/Mohammad-AbuShehada/handwritten-digit-cnn-pytorch) |
+| **Log Ingestion & Query Service** | Backend | TypeScript, Fastify, PostgreSQL, Docker, Micro-batching | [GitHub Repo](https://github.com/Mohammad-AbuShehada/log-ingestion-query-service) |
+| **Handwritten Digit Recognition** | AI / ML | Python, PyTorch, Streamlit, MNIST, Hugging Face | [Live Demo](https://huggingface.co/spaces/mohammad147/handwritten-digit-cnn) • [Repo](https://github.com/Mohammad-AbuShehada/handwritten-digit-cnn-pytorch) |
 | **CS Hub (React Edition)** | Frontend / Platform | React, Material UI, JavaScript, REST APIs, Render | [Live App](https://aaup-computer-science.onrender.com/) • [Repo](https://github.com/Mohammad-AbuShehada/AAUP---Computer-Science) |
 | **Moon Storefront** | Frontend / E-Commerce | React, Material UI, Zustand, TanStack Query, Axios | [Live Demo](https://react-project-uixb.onrender.com/) |
 
