@@ -11,7 +11,8 @@ A modern, high-performance developer portfolio showcasing full-stack web applica
 - **Dual Theme System:** Seamless Dark and Light theme toggle with `localStorage` persistence and system color scheme auto-detection.
 - **Cinematic Enter Gateway:** Interactive 0–100% preloader with a smooth entrance transition and staggered element reveals.
 - **Smart Custom Cursor:** Trailing magnetic cursor that adapts dynamically with contextual action labels (`Explore`, `Watch`, `Code`, `Open`, `Email`).
-- **3D Perspective Tilt:** Subtle 60fps card tilt physics reacting to mouse movement on desktop viewports.
+- **3D Perspective Tilt & Magnetic Physics:** Subtle 60fps card tilt physics and magnetic attraction on primary interactive buttons.
+- **Scroll Progress Indicator:** Dynamic progress bar reflecting page scroll depth in real time.
 - **Filterable Projects Hub:** Instant client-side filtering by domain (*Full Stack & Backend*, *AI & Machine Learning*, *Frontend*, *Data & QA*).
 - **Responsive & Lightweight:** Optimized vanilla JavaScript and modular CSS tokens without heavy runtime dependencies or hardware lag.
 - **Async Contact Form:** Integrated with FormSubmit API for direct message delivery with asynchronous feedback and mailto fallback.
@@ -23,7 +24,7 @@ A modern, high-performance developer portfolio showcasing full-stack web applica
 - **Markup:** HTML5 (Semantic & Accessible)
 - **Styling:** Custom CSS3 (Design Tokens, Flexbox/Grid, Glassmorphism, 3D Transforms)
 - **Framework:** Bootstrap 5 (Grid & Base Components)
-- **Typography:** Space Grotesk, Plus Jakarta Sans, JetBrains Mono
+- **Typography:** Inter, Plus Jakarta Sans, JetBrains Mono
 - **Scripting:** Vanilla JavaScript (ES6+, IntersectionObserver, requestAnimationFrame)
 
 ---
