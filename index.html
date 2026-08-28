@@ -3,114 +3,215 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohammad Abushehada | Portfolio</title>
+  <title>Mohammad Abushehada | Full Stack Web Developer & Software Engineer</title>
   <meta
     name="description"
-    content="Portfolio of Mohammad Abushehada featuring projects, experience, skills, and selected work across different fields."
+    content="Portfolio of Mohammad Abushehada — Full Stack Web Developer specializing in React and ASP.NET Core Web API, AI solutions with PyTorch, and clean software engineering."
   >
+  <!-- Anti-flash script for instant theme load -->
+  <script>
+    (function () {
+      try {
+        const savedTheme = localStorage.getItem("ma-theme");
+        if (
+          savedTheme === "light" ||
+          (!savedTheme && window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches)
+        ) {
+          document.documentElement.classList.add("light");
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Ambient Spotlight & Background Atmosphere -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+  <div class="cursor-spotlight" id="cursor-spotlight" aria-hidden="true"></div>
+
   <div class="site-shell">
-    <header class="hero-section">
-      <nav class="navbar navbar-expand-lg portfolio-nav">
+    <!-- Navbar -->
+    <header class="portfolio-header">
+      <nav class="navbar navbar-expand-lg portfolio-nav fixed-top" id="main-navbar">
         <div class="container">
-          <a class="navbar-brand" href="#top">Mohammad Abushehada</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="mainNav">
+          <a class="navbar-brand" href="#top">
+            <span class="brand-logo">MA</span>
+            <span class="brand-name">Mohammad Abushehada</span>
+          </a>
+
+          <div class="d-flex align-items-center gap-2 order-lg-3 ms-auto ms-lg-3">
+            <!-- Theme Toggle Button -->
+            <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark theme">
+              <!-- Sun Icon -->
+              <svg class="theme-icon icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <!-- Moon Icon -->
+              <svg class="theme-icon icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </button>
+
+            <!-- Navbar Toggler for Mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+
+          <div class="collapse navbar-collapse order-lg-2" id="mainNav">
             <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
               <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
               <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
               <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
               <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-              <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+              <li class="nav-item"><a class="nav-link" href="#education">Education & Certs</a></li>
               <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
             </ul>
           </div>
         </div>
       </nav>
-
-      <section class="container hero-content" id="top">
-        <div class="row align-items-center g-4">
-          <div class="col-lg-7">
-            <div class="eyebrow reveal reveal-left">Portfolio | Projects | Experience</div>
-            
-            <p class="hero-copy reveal reveal-left">
-              A simple portfolio that brings together projects, practical experience, technical skills, and different areas of work in an organized way.
-            </p>
-            <p class="hero-copy hero-copy-soft reveal reveal-left">
-              I am interested in web development and technology in general, especially in IT and AI fields. I enjoy learning new technologies and improving my technical skills.
-            </p>
-            <div class="hero-actions reveal reveal-left">
-              <a class="btn btn-primary btn-lg" href="#projects">View Projects</a>
-              <a class="btn btn-outline-light btn-lg" href="#contact">Contact Me</a>
-            </div>
-            <div class="hero-metrics reveal reveal-left">
-              <div class="metric-card">
-                <strong>Projects</strong>
-                <span>Frontend, data analysis, testing, and practical builds</span>
-              </div>
-              <div class="metric-card">
-                <strong>Experience</strong>
-                <span>ASAL internship, training, and team leadership</span>
-              </div>
-              <div class="metric-card">
-                <strong>Skills</strong>
-                <span>UI, APIs, teamwork, analysis, and structured development</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-5">
-            <div class="portrait-wrap reveal reveal-right">
-              <div class="portrait-glow"></div>
-              <img src="img/mohammad_abushehada.png" alt="Portrait of Mohammad Abushehada" class="img-fluid portrait-image">
-            </div>
-          </div>
-        </div>
-      </section>
     </header>
 
+    <!-- Hero Section -->
+    <section class="hero-section" id="top">
+      <div class="container hero-content">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7">
+            <!-- Status Badge -->
+            <div class="badge-status reveal reveal-up">
+              <span class="status-dot"></span>
+              <span>Available for Full-Time Roles & Engineering Projects</span>
+            </div>
+            
+            <h1 class="hero-title reveal reveal-up">
+              Building scalable <span class="gradient-text">web applications</span> & intelligent software.
+            </h1>
+            
+            <p class="hero-lead reveal reveal-up">
+              Hi, I’m <strong>Mohammad Abushehada</strong> — a Computer Science graduate specializing in Full Stack Web Development with <strong>React</strong> and <strong>ASP.NET Core</strong>. I design clean architectures, high-performance APIs, responsive user experiences, and machine learning solutions.
+            </p>
+            
+            <div class="hero-actions reveal reveal-up">
+              <a class="btn btn-primary btn-lg" href="#projects">
+                <span>Explore Projects</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+              <a class="btn btn-outline-custom btn-lg" href="#contact">Contact Me</a>
+              <a class="btn btn-ghost btn-lg" href="https://github.com/Mohammad-AbuShehada" target="_blank" rel="noreferrer" title="GitHub Profile">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>GitHub</span>
+              </a>
+            </div>
+
+            <!-- Key Quick Metrics -->
+            <div class="hero-metrics reveal reveal-up">
+              <div class="metric-card">
+                <div class="metric-num">2026</div>
+                <div class="metric-desc">Computer Science Graduate (GPA 3.16)</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-num">8+</div>
+                <div class="metric-desc">Full-Stack, AI & Backend Builds</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-num">L2</div>
+                <div class="metric-desc">Problem Solving Instructor & Mentor</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="portrait-container reveal reveal-right">
+              <div class="portrait-backdrop"></div>
+              <div class="portrait-card">
+                <img src="img/mohammad_abushehada.png" alt="Portrait of Mohammad Abushehada" class="portrait-img">
+                <div class="portrait-badge">
+                  <span class="badge-role">Full Stack Developer</span>
+                  <span class="badge-tech">React &bull; ASP.NET Core &bull; PyTorch</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
     <main>
+      <!-- About Section -->
       <section class="section-block" id="about">
         <div class="container">
-          <div class="section-heading reveal reveal-up">
-            <span class="section-kicker">About</span>
-            <h2>Background, strengths, and the way I approach technical work.</h2>
-            <p>A clear overview of my education, core strengths, and the practical mindset behind the projects shown here.</p>
+          <div class="section-header reveal reveal-up">
+            <span class="section-tag">About Me</span>
+            <h2 class="section-title">Practical Mindset, Clean Architecture & Strong Foundations</h2>
+            <p class="section-subtitle">A balanced engineer bridging backend robustness, intelligent models, and polished user interfaces.</p>
           </div>
+
           <div class="row g-4 align-items-stretch">
             <div class="col-lg-7">
-              <div class="glass-card reveal reveal-left">
+              <div class="glass-box h-100 reveal reveal-left">
+                <h3 class="glass-title">Engineering Philosophy</h3>
                 <p>
-                  I build responsive interfaces, reusable components, and frontend experiences that feel smooth and organized across devices.
+                  I specialize in building complete web applications from database schema design and secure backend REST APIs to modern, interactive frontend interfaces. My primary tools of choice are <strong>React</strong> on the client and <strong>ASP.NET Core Web API</strong> with <strong>Entity Framework Core</strong> on the server.
                 </p>
-                <p class="mb-0">
-                  I also have experience in testing, team coordination, and technical workshops, which helps me keep projects practical and well-structured.
+                <p>
+                  Beyond web development, I have a deep passion for <strong>Algorithms, Data Structures, and Problem Solving</strong>. Teaching these topics as an instructor reinforced my appreciation for writing clean, efficient, and well-tested code. I also explore machine learning and AI applications with <strong>PyTorch</strong>.
                 </p>
+                <div class="about-highlights">
+                  <span class="highlight-chip">Full Stack Architecture</span>
+                  <span class="highlight-chip">REST APIs & JWT Auth</span>
+                  <span class="highlight-chip">Modern State Management</span>
+                  <span class="highlight-chip">Algorithmic Problem Solving</span>
+                  <span class="highlight-chip">Relational Database Design</span>
+                </div>
               </div>
             </div>
+
             <div class="col-lg-5">
-              <div class="info-stack reveal reveal-right">
-                <div class="info-item">
-                  <span class="info-label">Education</span>
-                  <strong>Bachelor of Computer Science</strong>
-                  <small>Arab American University | GPA 3.16 / 4.0</small>
+              <div class="info-cards-stack h-100 reveal reveal-right">
+                <div class="info-card">
+                  <div class="info-icon">🎓</div>
+                  <div class="info-content">
+                    <span class="info-title">Education</span>
+                    <strong>Bachelor of Computer Science</strong>
+                    <small>Arab American University Palestine (2026) | GPA: 3.16 / 4.0</small>
+                  </div>
                 </div>
-                <div class="info-item">
-                  <span class="info-label">Languages</span>
-                  <strong>Arabic, English</strong>
-                  <small>Native Arabic | Intermediate English</small>
+
+                <div class="info-card">
+                  <div class="info-icon">📍</div>
+                  <div class="info-content">
+                    <span class="info-title">Location & Languages</span>
+                    <strong>Jenin, Palestine</strong>
+                    <small>Arabic (Native) &bull; English (Intermediate)</small>
+                  </div>
                 </div>
-                <div class="info-item">
-                  <span class="info-label">Strengths</span>
-                  <strong>Frontend Development, Data Analysis, Software Engineering</strong>
-                  <small>Problem solving, structured implementation, and technical collaboration</small>
+
+                <div class="info-card">
+                  <div class="info-icon">⚡</div>
+                  <div class="info-content">
+                    <span class="info-title">Core Stack</span>
+                    <strong>React, ASP.NET Core, PostgreSQL, PyTorch</strong>
+                    <small>C#, Python, JavaScript (ES6+), Zustand, TanStack Query</small>
+                  </div>
                 </div>
               </div>
             </div>
@@ -118,276 +219,718 @@
         </div>
       </section>
 
+      <!-- Experience & Teaching Section -->
       <section class="section-block section-tinted" id="experience">
         <div class="container">
-          <div class="section-heading reveal reveal-up">
-            <span class="section-kicker">Experience</span>
-            <h2>Practical experience across internships, training, and leadership.</h2>
-            <p>Roles and activities that reflect frontend work, technical coordination, and hands-on project experience.</p>
+          <div class="section-header reveal reveal-up">
+            <span class="section-tag">Career & Experience</span>
+            <h2 class="section-title">Professional Experience & Teaching</h2>
+            <p class="section-subtitle">Real-world internships, hands-on development programs, and technical instructor roles.</p>
           </div>
-          <div class="timeline">
-            <article class="timeline-card reveal reveal-left">
-              <span class="timeline-badge">Internship</span>
-              <h3>Frontend Development Intern</h3>
-              <p class="timeline-meta">ASAL Technologies | 4 Months</p>
-              <p>Developed responsive web pages using HTML and CSS, applied Git and GitHub for collaboration and version control, worked on frontend tasks in a structured team environment, and gained exposure to React fundamentals and modern workflows.</p>
+
+          <div class="timeline-wrapper">
+            <!-- Experience 1: Instructor -->
+            <article class="timeline-item reveal reveal-up">
+              <div class="timeline-marker"></div>
+              <div class="timeline-card">
+                <div class="timeline-header">
+                  <div>
+                    <span class="timeline-badge badge-teaching">Teaching & Mentorship</span>
+                    <h3 class="timeline-role">Problem Solving Instructor</h3>
+                    <div class="timeline-company">IT Club &bull; Arab American University</div>
+                  </div>
+                  <div class="timeline-period">Instructor Role</div>
+                </div>
+                <p class="timeline-text">
+                  Designed and delivered a comprehensive Problem Solving Level 2 curriculum for university students. Prepared structured lectures, algorithmic problem sets, and competitive contests.
+                </p>
+                <ul class="timeline-points">
+                  <li>Taught essential algorithms and data structures: Stack, Queue, Priority Queue, Binary Search, Prefix Sum, Set, Maps, Greedy, Two Pointers, and Bitwise operations.</li>
+                  <li>Mentored participating students, tracked learning curves, and evaluated competition problem submissions.</li>
+                </ul>
+              </div>
             </article>
-            <article class="timeline-card reveal reveal-left">
-              <span class="timeline-badge">Leadership</span>
-              <h3>Technical Lead</h3>
-              <p class="timeline-meta">IT Club, Arab American University</p>
-              <p>Led technical coordination for club activities and internal projects, conducted a workshop on gem5 simulation concepts, and improved task distribution and collaboration within the team.</p>
+
+            <!-- Experience 2: ASAL -->
+            <article class="timeline-item reveal reveal-up">
+              <div class="timeline-marker"></div>
+              <div class="timeline-card">
+                <div class="timeline-header">
+                  <div>
+                    <span class="timeline-badge badge-internship">Internship</span>
+                    <h3 class="timeline-role">Frontend Development Intern</h3>
+                    <div class="timeline-company">ASAL Technologies &bull; 4 Months</div>
+                  </div>
+                  <div class="timeline-period">4 Months</div>
+                </div>
+                <p class="timeline-text">
+                  Gained intensive hands-on experience in a structured agile development team, building responsive web interfaces and strengthening frontend fundamentals.
+                </p>
+                <ul class="timeline-points">
+                  <li>Developed responsive web pages using modern HTML5, CSS3, and JavaScript (ES6+).</li>
+                  <li>Collaborated using Git & GitHub workflows for code reviews and version management.</li>
+                  <li>Deepened knowledge in React fundamentals, reusable UI components, and modern frontend practices.</li>
+                </ul>
+              </div>
             </article>
-            <article class="timeline-card reveal reveal-right">
-              <span class="timeline-badge">Teaching</span>
-              <h3>Teaching Assistant</h3>
-              <p class="timeline-meta">Problem Solving Level 1 | Orapex</p>
-              <p>Supported course organization, grading, and attendance tracking, helped students strengthen structured algorithmic thinking, and used Excel and Google Classroom to improve course management.</p>
+
+            <!-- Experience 3: Knowledge Academy -->
+            <article class="timeline-item reveal reveal-up">
+              <div class="timeline-marker"></div>
+              <div class="timeline-card">
+                <div class="timeline-header">
+                  <div>
+                    <span class="timeline-badge badge-training">Training Project</span>
+                    <h3 class="timeline-role">Frontend Training Specialist</h3>
+                    <div class="timeline-company">Knowledge Academy</div>
+                  </div>
+                  <div class="timeline-period">Completed</div>
+                </div>
+                <p class="timeline-text">
+                  Engineered an end-to-end React storefront application as the capstone graduation project.
+                </p>
+                <ul class="timeline-points">
+                  <li>Designed modular component architecture and integrated external RESTful APIs.</li>
+                  <li>Focused on seamless responsive design, UX consistency, and optimized data flows.</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Experience 4: IT Club Lead -->
+            <article class="timeline-item reveal reveal-up">
+              <div class="timeline-marker"></div>
+              <div class="timeline-card">
+                <div class="timeline-header">
+                  <div>
+                    <span class="timeline-badge badge-lead">Leadership</span>
+                    <h3 class="timeline-role">Technical Lead & Workshop Coordinator</h3>
+                    <div class="timeline-company">IT Club &bull; Arab American University</div>
+                  </div>
+                  <div class="timeline-period">Leadership</div>
+                </div>
+                <p class="timeline-text">
+                  Led technical coordination for club activities, organized technical workshops (including gem5 simulation concepts), and improved collaborative workflows within student teams.
+                </p>
+              </div>
             </article>
           </div>
         </div>
       </section>
 
+      <!-- Projects Section -->
       <section class="section-block" id="projects">
         <div class="container">
-          <div class="section-heading reveal reveal-up">
-            <span class="section-kicker">Projects</span>
-            <h2>Projects organized by area.</h2>
-            <p>Browse selected work by category to explore frontend, data-related, and testing projects in a simple and organized layout.</p>
+          <div class="section-header reveal reveal-up">
+            <span class="section-tag">Featured Work</span>
+            <h2 class="section-title">Selected Projects & Architecture Builds</h2>
+            <p class="section-subtitle">Explore selected projects across Full-Stack Web, Backend Services, AI/Machine Learning, and Frontend applications.</p>
           </div>
 
-          <div class="project-browser reveal reveal-up">
-            <div class="project-tabs" role="tablist" aria-label="Project categories">
-              <button class="project-tab is-active" type="button" data-filter="frontend">Frontend</button>
-              <button class="project-tab" type="button" data-filter="data">Data Analysis</button>
-              <button class="project-tab" type="button" data-filter="testing">Testing</button>
+          <!-- Project Filter Tabs -->
+          <div class="project-filters reveal reveal-up" role="tablist" aria-label="Project filter tabs">
+            <button class="filter-tab is-active" type="button" data-filter="all">All Projects</button>
+            <button class="filter-tab" type="button" data-filter="fullstack">Full Stack & Backend</button>
+            <button class="filter-tab" type="button" data-filter="ai">AI & Machine Learning</button>
+            <button class="filter-tab" type="button" data-filter="frontend">Frontend Web</button>
+            <button class="filter-tab" type="button" data-filter="data">Data & QA</button>
+          </div>
+
+          <!-- Projects Grid -->
+          <div class="row g-4 project-grid">
+            
+            <!-- Project 1: Course Points System (Featured Full Stack) -->
+            <div class="col-lg-6 project-item" data-category="fullstack">
+              <article class="project-card featured-card h-100">
+                <div class="card-top">
+                  <span class="project-category-tag">Featured Full-Stack</span>
+                  <div class="project-stars">★ System Architecture</div>
+                </div>
+                <h3 class="project-name">Course Points Management System</h3>
+                <p class="project-description">
+                  A comprehensive, production-grade course administration platform built from scratch to replace legacy Excel tracking with automated workflows, real-time leaderboards, and role-based security.
+                </p>
+                <div class="project-features-list">
+                  <span>JWT & Refresh Tokens</span>
+                  <span>Role-Based Auth</span>
+                  <span>Attendance & Points Tracking</span>
+                  <span>CSV Export Engine</span>
+                </div>
+                <div class="project-tech-stack">
+                  <span class="tech-pill">React</span>
+                  <span class="tech-pill">ASP.NET Core Web API</span>
+                  <span class="tech-pill">PostgreSQL (Neon)</span>
+                  <span class="tech-pill">Material UI</span>
+                  <span class="tech-pill">Zustand</span>
+                  <span class="tech-pill">Render</span>
+                </div>
+                <div class="project-footer">
+                  <a class="btn-project btn-video-demo" href="https://www.linkedin.com/posts/mohammad-abushehada_softwareengineering-webdevelopment-aspnet-activity-7474705874331025408-t-xp?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFOtYiEBsFTELYAN6kNxhGPv963lik_-8Yo" target="_blank" rel="noreferrer">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                    <span>Watch Video Demo</span>
+                  </a>
+                </div>
+              </article>
             </div>
 
-            <div class="row g-4 project-grid">
-              <div class="col-lg-6 project-entry" data-category="frontend">
-                <article class="project-card h-100 featured-project">
-                  <div class="project-label">React Commerce</div>
-                  <h4>Moon Storefront</h4>
-                  <p>Responsive storefront built with React and Material UI for a polished shopping experience.</p>
-                  <div class="project-stack">
-                    <span>React</span>
-                    <span>Material UI</span>
-                    <span>Axios</span>
-                    <span>React Query</span>
-                    <span>Zustand</span>
-                  </div>
-                  <div class="project-actions">
-                    <a class="project-link primary-link" href="https://react-project-uixb.onrender.com/" target="_blank" rel="noreferrer">Live Demo</a>
-                  </div>
-                </article>
-              </div>
-
-              <div class="col-lg-6 project-entry" data-category="frontend">
-                <article class="project-card h-100">
-                  <div class="project-label">Interactive Tracker</div>
-                  <h4>Ramadan Tracker</h4>
-                  <p>Prayer and Quran tracking app with charts, weekly filtering, dark mode, and localStorage support.</p>
-                  <div class="project-stack">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                    <span>Charts</span>
-                    <span>localStorage</span>
-                  </div>
-                  <div class="project-actions">
-                    <a class="project-link primary-link" href="https://mohammad-abushehada.github.io/ramadan-tracker/" target="_blank" rel="noreferrer">Live Demo</a>
-                  </div>
-                </article>
-              </div>
-
-              <div class="col-lg-6 project-entry" data-category="frontend">
-                <article class="project-card h-100">
-                  <div class="project-label">Student Platform</div>
-                  <h4>CS Hub</h4>
-                  <p>Academic resource platform that makes study materials and recorded lectures easier to access.</p>
-                  <div class="project-stack">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                    <span>Teamwork</span>
-                  </div>
-                  <div class="project-actions">
-                    <a class="project-link primary-link" href="https://aaup-computer-science.onrender.com/" target="_blank" rel="noreferrer">Live Demo</a>
-                  </div>
-                </article>
-              </div>
-
-              <div class="col-lg-6 project-entry" data-category="data">
-                <article class="project-card h-100">
-                  <div class="project-label">Data Analysis</div>
-                  <h4>Ecommerce Data Warehouse</h4>
-                  <p>Data warehouse project focused on building a basic analytical database model for cleaner reporting and analysis workflows.</p>
-                  <div class="project-stack">
-                    <span>SQL Server</span>
-                    <span>SSMS</span>
-                    <span>Data Warehouse</span>
-                    <span>SQL</span>
-                    <span>Reporting</span>
-                  </div>
-                  <div class="project-actions">
-                    <a class="project-link secondary-link" href="https://github.com/Mohammad-AbuShehada/EcommerceDW_Project" target="_blank" rel="noreferrer">GitHub</a>
-                  </div>
-                </article>
-              </div>
-
-              <div class="col-lg-6 project-entry" data-category="testing">
-                <article class="project-card h-100">
-                  <div class="project-label">Manual & Automation</div>
-                  <h4>Software Testing Project</h4>
-                  <p>Manual testing, issue documentation, and basic Cypress automation for cleaner quality workflows.</p>
-                  <div class="project-stack">
-                    <span>Manual Testing</span>
-                    <span>Cypress</span>
-                    <span>Jira</span>
-                    <span>Trello</span>
-                  </div>
-                  <div class="project-actions">
-                    <a class="project-link primary-link" href="https://www.youtube.com/watch?v=jQ39UCLYXL8" target="_blank" rel="noreferrer">Live Demo</a>
-                  </div>
-                </article>
-              </div>
+            <!-- Project 2: Log Ingestion & Query Service (Backend) -->
+            <div class="col-lg-6 project-item" data-category="fullstack">
+              <article class="project-card h-100">
+                <div class="card-top">
+                  <span class="project-category-tag">Backend & Systems</span>
+                </div>
+                <h3 class="project-name">Log Ingestion & Query Service</h3>
+                <p class="project-description">
+                  High-throughput backend service engineered in ASP.NET Core for structured log ingestion and fast analytical queries, supporting rich metadata filters, timestamp range searches, and structured metrics.
+                </p>
+                <div class="project-features-list">
+                  <span>Structured Ingestion</span>
+                  <span>Analytical Filters</span>
+                  <span>High Concurrency</span>
+                  <span>REST API Design</span>
+                </div>
+                <div class="project-tech-stack">
+                  <span class="tech-pill">C#</span>
+                  <span class="tech-pill">ASP.NET Core</span>
+                  <span class="tech-pill">REST APIs</span>
+                  <span class="tech-pill">LINQ</span>
+                  <span class="tech-pill">In-Memory Store</span>
+                </div>
+                <div class="project-footer">
+                  <a class="btn-project btn-secondary" href="https://github.com/Mohammad-AbuShehada/log-ingestion-query-service" target="_blank" rel="noreferrer">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>View GitHub Repo</span>
+                  </a>
+                </div>
+              </article>
             </div>
+
+            <!-- Project 3: Handwritten Digit CNN (AI / ML) -->
+            <div class="col-lg-6 project-item" data-category="ai">
+              <article class="project-card h-100">
+                <div class="card-top">
+                  <span class="project-category-tag tag-ai">AI & Deep Learning</span>
+                </div>
+                <h3 class="project-name">Handwritten Digit Recognition CNN</h3>
+                <p class="project-description">
+                  Convolutional Neural Network (CNN) built in PyTorch for classifying handwritten digits with high accuracy. Implements custom PyTorch datasets, convolutional & pooling layers, loss optimization, and evaluation metrics.
+                </p>
+                <div class="project-features-list">
+                  <span>PyTorch Model Architecture</span>
+                  <span>MNIST Benchmark</span>
+                  <span>Data Augmentation</span>
+                  <span>Loss & Accuracy Metrics</span>
+                </div>
+                <div class="project-tech-stack">
+                  <span class="tech-pill">PyTorch</span>
+                  <span class="tech-pill">Python</span>
+                  <span class="tech-pill">CNN</span>
+                  <span class="tech-pill">Computer Vision</span>
+                  <span class="tech-pill">Deep Learning</span>
+                </div>
+                <div class="project-footer">
+                  <a class="btn-project btn-secondary" href="https://github.com/Mohammad-AbuShehada/handwritten-digit-cnn-pytorch" target="_blank" rel="noreferrer">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>View GitHub Repo</span>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <!-- Project 4: CS Hub – Student Platform (Updated to React) -->
+            <div class="col-lg-6 project-item" data-category="frontend">
+              <article class="project-card h-100">
+                <div class="card-top">
+                  <span class="project-category-tag">Student Platform</span>
+                </div>
+                <h3 class="project-name">CS Hub – Student Support Platform</h3>
+                <p class="project-description">
+                  Modernized student portal built with React and Material UI. Provides organized course study materials, exam summaries, and lecture references for Computer Science students at Arab American University.
+                </p>
+                <div class="project-features-list">
+                  <span>Modular React UI</span>
+                  <span>Dynamic Content APIs</span>
+                  <span>Fast Material UI Navigation</span>
+                  <span>Student Community Portal</span>
+                </div>
+                <div class="project-tech-stack">
+                  <span class="tech-pill">React</span>
+                  <span class="tech-pill">Material UI</span>
+                  <span class="tech-pill">JavaScript (ES6+)</span>
+                  <span class="tech-pill">Axios</span>
+                  <span class="tech-pill">Render</span>
+                </div>
+                <div class="project-footer">
+                  <a class="btn-project btn-primary-custom" href="https://aaup-computer-science.onrender.com/" target="_blank" rel="noreferrer">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    <span>Live Web App</span>
+                  </a>
+                  <a class="btn-project btn-ghost-link" href="https://github.com/Mohammad-AbuShehada/AAUP---Computer-Science" target="_blank" rel="noreferrer">
+                    <span>GitHub</span>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <!-- Project 5: Moon Storefront (React E-Commerce) -->
+            <div class="col-lg-6 project-item" data-category="frontend">
+              <article class="project-card h-100">
+                <div class="card-top">
+                  <span class="project-category-tag">E-Commerce Frontend</span>
+                </div>
+                <h3 class="project-name">Moon Storefront</h3>
+                <p class="project-description">
+                  Polished e-commerce storefront crafted with React and Material UI. Features complete product browsing, detailed views, shopping cart & checkout flows, wishlist, user profiles, and bilingual/theme support.
+                </p>
+                <div class="project-features-list">
+                  <span>Light / Dark Mode</span>
+                  <span>State with Zustand</span>
+                  <span>TanStack React Query</span>
+                  <span>Protected Routing</span>
+                </div>
+                <div class="project-tech-stack">
+                  <span class="tech-pill">React</span>
+                  <span class="tech-pill">Material UI</span>
+                  <span class="tech-pill">Zustand</span>
+                  <span class="tech-pill">React Query</span>
+                  <span class="tech-pill">Axios</span>
+                </div>
+                <div class="project-footer">
+                  <a class="btn-project btn-primary-custom" href="https://react-project-uixb.onrender.com/" target="_blank" rel="noreferrer">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    <span>Live Demo</span>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <!-- Project 6: Ramadan Tracker -->
+            <div class="col-lg-6 project-item" data-category="frontend">
+              <article class="project-card h-100">
+                <div class="card-top">
+                  <span class="project-category-tag">Interactive Tracker</span>
+                </div>
+                <h3 class="project-name">Ramadan Tracker</h3>
+                <p class="project-description">
+                  Daily worship and habit tracking application with interactive charts, weekly goal filters, dark mode styling, and persistent browser storage for personal progress analytics.
+                </p>
+                <div class="project-features-list">
+                  <span>Interactive Charts</span>
+                  <span>Weekly Analytics</span>
+                  <span>Local Storage Persistence</span>
+                  <span>Responsive UI</span>
+                </div>
+                <div class="project-tech-stack">
+                  <span class="tech-pill">JavaScript (ES6)</span>
+                  <span class="tech-pill">HTML5</span>
+                  <span class="tech-pill">CSS3</span>
+                  <span class="tech-pill">Chart.js</span>
+                </div>
+                <div class="project-footer">
+                  <a class="btn-project btn-primary-custom" href="https://mohammad-abushehada.github.io/ramadan-tracker/" target="_blank" rel="noreferrer">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    <span>Live Demo</span>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <!-- Project 7: Ecommerce Data Warehouse -->
+            <div class="col-lg-6 project-item" data-category="data">
+              <article class="project-card h-100">
+                <div class="card-top">
+                  <span class="project-category-tag">Data Engineering</span>
+                </div>
+                <h3 class="project-name">Ecommerce Data Warehouse</h3>
+                <p class="project-description">
+                  Data warehouse architecture designed using Star Schema modeling in SQL Server. Built for clean dimensional modeling, ETL flows, and business intelligence reporting.
+                </p>
+                <div class="project-features-list">
+                  <span>Star Schema Modeling</span>
+                  <span>SQL Server & SSMS</span>
+                  <span>Analytical Queries</span>
+                  <span>Reporting Workflows</span>
+                </div>
+                <div class="project-tech-stack">
+                  <span class="tech-pill">SQL Server</span>
+                  <span class="tech-pill">SSMS</span>
+                  <span class="tech-pill">Data Warehouse</span>
+                  <span class="tech-pill">SQL</span>
+                </div>
+                <div class="project-footer">
+                  <a class="btn-project btn-secondary" href="https://github.com/Mohammad-AbuShehada/EcommerceDW_Project" target="_blank" rel="noreferrer">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>View GitHub Repo</span>
+                  </a>
+                </div>
+              </article>
+            </div>
+
+            <!-- Project 8: Software Testing & QA -->
+            <div class="col-lg-6 project-item" data-category="data">
+              <article class="project-card h-100">
+                <div class="card-top">
+                  <span class="project-category-tag">QA & Automation</span>
+                </div>
+                <h3 class="project-name">Software Testing & QA Automation</h3>
+                <p class="project-description">
+                  Comprehensive testing workflow covering manual test case execution, issue tracking, and Cypress automated end-to-end testing suites.
+                </p>
+                <div class="project-features-list">
+                  <span>Cypress Automation</span>
+                  <span>Manual Test Design</span>
+                  <span>Jira & Trello Tracking</span>
+                  <span>Bug Documentation</span>
+                </div>
+                <div class="project-tech-stack">
+                  <span class="tech-pill">Cypress</span>
+                  <span class="tech-pill">Manual Testing</span>
+                  <span class="tech-pill">Jira</span>
+                  <span class="tech-pill">Trello</span>
+                </div>
+                <div class="project-footer">
+                  <a class="btn-project btn-primary-custom" href="https://www.youtube.com/watch?v=jQ39UCLYXL8" target="_blank" rel="noreferrer">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                    <span>Watch Test Demo</span>
+                  </a>
+                </div>
+              </article>
+            </div>
+
           </div>
         </div>
       </section>
 
+      <!-- Technical Skills Matrix Section -->
       <section class="section-block section-tinted" id="skills">
         <div class="container">
-          <div class="section-heading reveal reveal-up">
-            <span class="section-kicker">Skills</span>
-            <h2>Tools, technologies, and workflows used across projects.</h2>
-            <p>A concise overview of the technical stack, development tools, and working methods used throughout my work.</p>
+          <div class="section-header reveal reveal-up">
+            <span class="section-tag">Capabilities</span>
+            <h2 class="section-title">Technical Skills & Engineering Toolkit</h2>
+            <p class="section-subtitle">A comprehensive breakdown of technologies, frameworks, and engineering methodologies I leverage.</p>
           </div>
+
           <div class="row g-4">
-            <div class="col-md-6 col-xl-3">
-              <div class="skill-panel reveal reveal-left">
-                <h3>Development</h3>
-                <p>Python, Java, C++, C#, JavaScript, HTML, CSS, Bootstrap, Basic React</p>
+            <!-- Skill Box 1 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="skill-card reveal reveal-up">
+                <div class="skill-card-header">
+                  <div class="skill-icon">🎨</div>
+                  <h3>Frontend & State</h3>
+                </div>
+                <div class="skill-badges">
+                  <span class="skill-pill">React</span>
+                  <span class="skill-pill">JavaScript (ES6+)</span>
+                  <span class="skill-pill">Zustand</span>
+                  <span class="skill-pill">TanStack React Query</span>
+                  <span class="skill-pill">Material UI</span>
+                  <span class="skill-pill">HTML5 & CSS3</span>
+                  <span class="skill-pill">Bootstrap</span>
+                  <span class="skill-pill">React Router DOM</span>
+                  <span class="skill-pill">Axios</span>
+                  <span class="skill-pill">Responsive Design</span>
+                </div>
               </div>
             </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="skill-panel reveal reveal-up">
-                <h3>Database & Data</h3>
-                <p>SQL, SQL Server Management Studio, Data Warehousing, Power BI, Excel</p>
+
+            <!-- Skill Box 2 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="skill-card reveal reveal-up">
+                <div class="skill-card-header">
+                  <div class="skill-icon">⚙️</div>
+                  <h3>Backend & Web API</h3>
+                </div>
+                <div class="skill-badges">
+                  <span class="skill-pill">ASP.NET Core Web API</span>
+                  <span class="skill-pill">Entity Framework Core</span>
+                  <span class="skill-pill">RESTful API Design</span>
+                  <span class="skill-pill">JWT Authentication</span>
+                  <span class="skill-pill">Refresh Tokens</span>
+                  <span class="skill-pill">LINQ</span>
+                  <span class="skill-pill">Role-Based Auth</span>
+                  <span class="skill-pill">Middleware Architecture</span>
+                </div>
               </div>
             </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="skill-panel reveal reveal-up">
-                <h3>Engineering</h3>
-                <p>OOP, Data Structures, Problem Solving, Manual Testing, Responsive UI, API Integration</p>
+
+            <!-- Skill Box 3 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="skill-card reveal reveal-up">
+                <div class="skill-card-header">
+                  <div class="skill-icon">🗄️</div>
+                  <h3>Database & Cloud</h3>
+                </div>
+                <div class="skill-badges">
+                  <span class="skill-pill">PostgreSQL</span>
+                  <span class="skill-pill">Neon Serverless</span>
+                  <span class="skill-pill">SQL Server</span>
+                  <span class="skill-pill">Data Warehousing</span>
+                  <span class="skill-pill">Docker</span>
+                  <span class="skill-pill">Vite</span>
+                  <span class="skill-pill">Render</span>
+                  <span class="skill-pill">Postman</span>
+                </div>
               </div>
             </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="skill-panel reveal reveal-right">
-                <h3>Tools</h3>
-                <p>Git, GitHub, VS Code, Cypress, Jira, Trello, Microsoft Office, Google Classroom, Canva</p>
+
+            <!-- Skill Box 4 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="skill-card reveal reveal-up">
+                <div class="skill-card-header">
+                  <div class="skill-icon">💻</div>
+                  <h3>Programming Languages</h3>
+                </div>
+                <div class="skill-badges">
+                  <span class="skill-pill">C#</span>
+                  <span class="skill-pill">Python</span>
+                  <span class="skill-pill">JavaScript</span>
+                  <span class="skill-pill">Java</span>
+                  <span class="skill-pill">C++</span>
+                  <span class="skill-pill">SQL</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Skill Box 5 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="skill-card reveal reveal-up">
+                <div class="skill-card-header">
+                  <div class="skill-icon">🧠</div>
+                  <h3>AI, Algorithms & QA</h3>
+                </div>
+                <div class="skill-badges">
+                  <span class="skill-pill">PyTorch (CNN)</span>
+                  <span class="skill-pill">Algorithms & Data Structures</span>
+                  <span class="skill-pill">Problem Solving</span>
+                  <span class="skill-pill">Object-Oriented Design (OOP)</span>
+                  <span class="skill-pill">Cypress Testing</span>
+                  <span class="skill-pill">Manual Testing</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Skill Box 6 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="skill-card reveal reveal-up">
+                <div class="skill-card-header">
+                  <div class="skill-icon">🛠️</div>
+                  <h3>Workflow & Versioning</h3>
+                </div>
+                <div class="skill-badges">
+                  <span class="skill-pill">Git</span>
+                  <span class="skill-pill">GitHub</span>
+                  <span class="skill-pill">VS Code & Visual Studio</span>
+                  <span class="skill-pill">Jira & Trello</span>
+                  <span class="skill-pill">Team Collaboration</span>
+                  <span class="skill-pill">Agile Principles</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section-block" id="certifications">
+      <!-- Education, Certifications & Achievements Section -->
+      <section class="section-block" id="education">
         <div class="container">
-          <div class="section-heading reveal reveal-up">
-            <span class="section-kicker">Certifications</span>
-            <h2>Certificates, courses, and achievements.</h2>
-            <p>Selected certifications and milestones that support my technical growth and continuous learning.</p>
+          <div class="section-header reveal reveal-up">
+            <span class="section-tag">Milestones</span>
+            <h2 class="section-title">Education, Certifications & Achievements</h2>
+            <p class="section-subtitle">Academic foundations, competitive programming achievements, and continuous technical certifications.</p>
           </div>
+
           <div class="row g-4">
-            <div class="col-md-6 col-xl-3">
-              <div class="certificate-card reveal reveal-left">
-                <span class="info-label">Certification</span>
-                <h3>Problem Solving Level 3</h3>
-                <p>Gaza Sky Geeks | 2025</p>
+            <!-- Academic Degree Card -->
+            <div class="col-lg-6">
+              <div class="degree-card reveal reveal-left h-100">
+                <div class="degree-badge">Degree Program</div>
+                <h3 class="degree-title">Bachelor of Computer Science</h3>
+                <div class="degree-institution">Arab American University Palestine (AAUP)</div>
+                <div class="degree-meta">
+                  <span class="meta-pill">Graduation: 2026</span>
+                  <span class="meta-pill highlight-pill">GPA: 3.16 / 4.0</span>
+                </div>
+                <p class="degree-desc">
+                  Focused on Software Engineering, Data Structures, Relational Database Systems, Operating Systems, Computer Networks, and Artificial Intelligence foundations.
+                </p>
               </div>
             </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="certificate-card reveal reveal-up">
-                <span class="info-label">Certification</span>
-                <h3>Prompt Engineering</h3>
-                <p>Gaza Sky Geeks</p>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="certificate-card reveal reveal-up">
-                <span class="info-label">Course</span>
-                <h3>AWS Course</h3>
-                <p>IT Club & Gaza Sky Geeks | 2024</p>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="certificate-card reveal reveal-right">
-                <span class="info-label">Achievement</span>
-                <h3>Codex Competition</h3>
-                <p>Third Place | Arab American University</p>
-              </div>
-            </div>
-            <div class="col-md-6 col-xl-3">
-              <div class="certificate-card reveal reveal-left">
-                <span class="info-label">Participation</span>
-                <h3>Hebron Code Jam</h3>
-                <p>Participant</p>
+
+            <!-- Certifications List Grid -->
+            <div class="col-lg-6">
+              <div class="row g-3">
+                <div class="col-12">
+                  <div class="cert-item reveal reveal-right">
+                    <div class="cert-icon">🏆</div>
+                    <div class="cert-content">
+                      <span class="cert-type">Competitive Programming</span>
+                      <h4>Problem Solving Level 3</h4>
+                      <p>Gaza Sky Geeks &bull; 2025</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="cert-item reveal reveal-right">
+                    <div class="cert-icon">🤖</div>
+                    <div class="cert-content">
+                      <span class="cert-type">Artificial Intelligence</span>
+                      <h4>Prompt Engineering Certification</h4>
+                      <p>Gaza Sky Geeks &bull; 2025</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="cert-item reveal reveal-right">
+                    <div class="cert-icon">🥉</div>
+                    <div class="cert-content">
+                      <span class="cert-type">Competition Award</span>
+                      <h4>Third Place &mdash; Codex Competition</h4>
+                      <p>Arab American University &bull; 2025</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="cert-item reveal reveal-right">
+                    <div class="cert-icon">🚀</div>
+                    <div class="cert-content">
+                      <span class="cert-type">Hackathon / Jam</span>
+                      <h4>Participant &mdash; Hebron Code Jam</h4>
+                      <p>2025</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="cert-item reveal reveal-right">
+                    <div class="cert-icon">☁️</div>
+                    <div class="cert-content">
+                      <span class="cert-type">Cloud Computing</span>
+                      <h4>AWS Cloud Training Course</h4>
+                      <p>IT Club & Gaza Sky Geeks &bull; 2024</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- Contact Section -->
       <section class="section-block contact-section" id="contact">
         <div class="container">
-          <div class="contact-card reveal reveal-up">
-            <span class="section-kicker">Contact</span>
-            <h2>Connect and explore more.</h2>
-            <p>
-              You can reach out directly or explore more work through the links below.
+          <div class="contact-box reveal reveal-up">
+            <span class="section-tag">Let's Connect</span>
+            <h2 class="contact-title">Have a project, role, or collaboration in mind?</h2>
+            <p class="contact-subtitle">
+              I’m available for full-time software engineering roles, full-stack development contracts, and challenging technical projects. Feel free to reach out directly.
             </p>
-            <div class="contact-links">
-              <a href="mailto:mohammadabushehada2@gmail.com">mohammadabushehada2@gmail.com</a>
-              <a href="tel:+972567895035">+972 56 789 5035</a>
-              <a href="https://www.linkedin.com/in/mohammad-abushehada/" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="https://github.com/Mohammad-Abushehada" target="_blank" rel="noreferrer">GitHub Profile</a>
-              <a href="https://www.youtube.com/@mo-code7" target="_blank" rel="noreferrer">YouTube Channel</a>
+
+            <!-- Quick Contacts Grid -->
+            <div class="contact-cards-grid">
+              <a class="contact-direct-card" href="mailto:mohammadabushehada2@gmail.com">
+                <div class="direct-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div class="direct-info">
+                  <span class="direct-label">Email</span>
+                  <span class="direct-value">mohammadabushehada2@gmail.com</span>
+                </div>
+              </a>
+
+              <a class="contact-direct-card" href="tel:+972567895035">
+                <div class="direct-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div class="direct-info">
+                  <span class="direct-label">Phone / WhatsApp</span>
+                  <span class="direct-value">+972 56 789 5035</span>
+                </div>
+              </a>
+
+              <a class="contact-direct-card" href="https://www.linkedin.com/in/mohammad-abushehada/" target="_blank" rel="noreferrer">
+                <div class="direct-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </div>
+                <div class="direct-info">
+                  <span class="direct-label">LinkedIn</span>
+                  <span class="direct-value">in/mohammad-abushehada</span>
+                </div>
+              </a>
+
+              <a class="contact-direct-card" href="https://github.com/Mohammad-AbuShehada" target="_blank" rel="noreferrer">
+                <div class="direct-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </div>
+                <div class="direct-info">
+                  <span class="direct-label">GitHub</span>
+                  <span class="direct-value">Mohammad-AbuShehada</span>
+                </div>
+              </a>
             </div>
-            <form class="contact-form" id="contact-form" action="https://formsubmit.co/mohammadabushehada2@gmail.com" method="POST">
-              <input type="hidden" name="_subject" value="New Portfolio Message">
+
+            <!-- Contact Message Form -->
+            <form class="contact-form-modern" id="contact-form" action="https://formsubmit.co/mohammadabushehada2@gmail.com" method="POST">
+              <input type="hidden" name="_subject" value="New Portfolio Message from Mohammad Abushehada Portfolio">
               <input type="hidden" name="_template" value="table">
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_next" value="https://mohammad-abushehada.github.io/portfolio/">
-              <input type="hidden" name="_url" value="https://mohammad-abushehada.github.io/portfolio/">
-              <input type="text" name="_honey" class="hidden-field" tabindex="-1" autocomplete="off">
+              <input type="text" name="_honey" class="hidden-honey" tabindex="-1" autocomplete="off">
+              
               <div class="row g-3">
                 <div class="col-md-6">
-                  <label class="form-label" for="contact-name">Name</label>
-                  <input class="form-control contact-input" id="contact-name" type="text" name="name" placeholder="Your name" required>
+                  <div class="form-group">
+                    <label class="form-label" for="contact-name">Your Name</label>
+                    <input class="form-input" id="contact-name" type="text" name="name" placeholder="John Doe" required>
+                  </div>
                 </div>
                 <div class="col-md-6">
-                  <label class="form-label" for="contact-email">Email</label>
-                  <input class="form-control contact-input" id="contact-email" type="email" name="email" placeholder="Your email" required>
+                  <div class="form-group">
+                    <label class="form-label" for="contact-email">Your Email</label>
+                    <input class="form-input" id="contact-email" type="email" name="email" placeholder="john@example.com" required>
+                  </div>
                 </div>
                 <div class="col-12">
-                  <label class="form-label" for="contact-message">Message</label>
-                  <textarea class="form-control contact-input contact-textarea" id="contact-message" name="message" rows="5" placeholder="Write your message here" required></textarea>
+                  <div class="form-group">
+                    <label class="form-label" for="contact-message">Your Message</label>
+                    <textarea class="form-input form-textarea" id="contact-message" name="message" rows="5" placeholder="Let's build something together..." required></textarea>
+                  </div>
                 </div>
-                <div class="col-12">
-                  <button class="btn btn-primary btn-lg contact-submit" type="submit">Send Message</button>
+                <div class="col-12 text-center">
+                  <button class="btn btn-primary btn-lg submit-btn" type="submit">
+                    <span>Send Message</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                  </button>
                 </div>
               </div>
             </form>
-            
-            <div class="form-status" id="form-status" aria-live="polite"></div>
+
+            <div class="form-feedback" id="form-status" aria-live="polite"></div>
           </div>
         </div>
       </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="portfolio-footer">
+      <div class="container">
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3 text-center text-md-start">
+          <div class="footer-copy">
+            &copy; 2026 <strong>Mohammad Abushehada</strong>. Built with clean code & modern web standards.
+          </div>
+          <div class="footer-links">
+            <a href="#top">Back to top ↑</a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 
+  <!-- Bootstrap Bundle JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Main Script -->
   <script src="js/main.js"></script>
 </body>
 </html>

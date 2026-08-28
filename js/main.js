@@ -1,117 +1,223 @@
-const revealItems = document.querySelectorAll(".reveal");
+/**
+ * MOHAMMAD ABUSHEHADA — PORTFOLIO JAVASCRIPT
+ * Smooth Theme Switcher, Spotlight Effect, Project Filters & Form Handling
+ */
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
+document.addEventListener("DOMContentLoaded", () => {
+  // ─── 1. THEME SWITCHER (Dark / Light) ──────────────────────────
+  const themeToggleBtn = document.getElementById("theme-toggle");
+  const htmlRoot = document.documentElement;
+
+  function initTheme() {
+    const savedTheme = localStorage.getItem("ma-theme");
+    if (savedTheme) {
+      if (savedTheme === "light") {
+        htmlRoot.classList.add("light");
+      } else {
+        htmlRoot.classList.remove("light");
+      }
+    } else {
+      const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+      if (prefersLight) {
+        htmlRoot.classList.add("light");
+      }
+    }
+  }
+
+  function toggleTheme() {
+    htmlRoot.classList.add("theming");
+    const isLight = htmlRoot.classList.toggle("light");
+    localStorage.setItem("ma-theme", isLight ? "light" : "dark");
+
+    setTimeout(() => {
+      htmlRoot.classList.remove("theming");
+    }, 400);
+  }
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener("click", toggleTheme);
+  }
+
+  initTheme();
+
+  // ─── 2. MOUSE SPOTLIGHT GLOW (Lightweight 60fps) ───────────────
+  const spotlight = document.getElementById("cursor-spotlight");
+  if (spotlight && window.matchMedia("(pointer: fine)").matches) {
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let currentX = mouseX;
+    let currentY = mouseY;
+    let isMoving = false;
+
+    window.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!isMoving) {
+        spotlight.style.opacity = "1";
+        isMoving = true;
       }
     });
-  },
-  {
-    threshold: 0.18,
-    rootMargin: "0px 0px -40px 0px",
+
+    document.addEventListener("mouseleave", () => {
+      spotlight.style.opacity = "0";
+      isMoving = false;
+    });
+
+    function renderSpotlight() {
+      currentX += (mouseX - currentX) * 0.15;
+      currentY += (mouseY - currentY) * 0.15;
+      spotlight.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+      requestAnimationFrame(renderSpotlight);
+    }
+    requestAnimationFrame(renderSpotlight);
   }
-);
 
-revealItems.forEach((item) => revealObserver.observe(item));
+  // ─── 3. NAVBAR SCROLL EFFECT & MOBILE CLOSE ────────────────────
+  const navbar = document.getElementById("main-navbar");
+  const navCollapse = document.getElementById("mainNav");
+  const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
 
-const projectTabs = document.querySelectorAll(".project-tab");
-const projectEntries = document.querySelectorAll(".project-entry");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 40) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  }, { passive: true });
 
-function setProjectFilter(filter) {
-  projectTabs.forEach((tab) => {
-    tab.classList.toggle("is-active", tab.dataset.filter === filter);
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (navCollapse && navCollapse.classList.contains("show")) {
+        const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+        if (bsCollapse) {
+          bsCollapse.hide();
+        }
+      }
+    });
   });
 
-  projectEntries.forEach((entry) => {
-    const shouldShow = entry.dataset.category === filter;
-    entry.classList.toggle("is-hidden", !shouldShow);
+  // ─── 4. INTERSECTION OBSERVER REVEALS ──────────────────────────
+  const reveals = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -30px 0px",
+      }
+    );
+
+    reveals.forEach((item) => revealObserver.observe(item));
+  } else {
+    // Fallback if IntersectionObserver is unsupported
+    reveals.forEach((item) => item.classList.add("is-visible"));
+  }
+
+  // ─── 5. PROJECT CATEGORY FILTERING ────────────────────────────
+  const filterTabs = document.querySelectorAll(".filter-tab");
+  const projectItems = document.querySelectorAll(".project-item");
+
+  function setProjectFilter(category) {
+    filterTabs.forEach((tab) => {
+      tab.classList.toggle("is-active", tab.dataset.filter === category);
+    });
+
+    projectItems.forEach((item) => {
+      const itemCat = item.dataset.category;
+      if (category === "all" || itemCat === category) {
+        item.classList.remove("is-hidden");
+      } else {
+        item.classList.add("is-hidden");
+      }
+    });
+  }
+
+  filterTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const filter = tab.dataset.filter || "all";
+      setProjectFilter(filter);
+    });
   });
-}
 
-projectTabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    setProjectFilter(tab.dataset.filter);
-  });
-});
+  // ─── 6. CONTACT FORM ASYNC SUBMISSION ──────────────────────────
+  const contactForm = document.getElementById("contact-form");
+  const formStatus = document.getElementById("form-status");
 
-setProjectFilter("frontend");
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (event) => {
+      const formData = new FormData(contactForm);
+      const submitButton = contactForm.querySelector('button[type="submit"]');
 
-const contactForm = document.querySelector("#contact-form");
-const formStatus = document.querySelector("#form-status");
+      // Local file preview bypass
+      if (window.location.protocol === "file:") {
+        if (formStatus) {
+          formStatus.className = "form-feedback is-visible is-success";
+          formStatus.textContent = "Form is running locally. In production, this sends an email via FormSubmit.";
+        }
+        return;
+      }
 
-if (contactForm) {
-  contactForm.addEventListener("submit", async (event) => {
-    const formData = new FormData(contactForm);
-    const submitButton = contactForm.querySelector('button[type="submit"]');
+      event.preventDefault();
 
-    if (window.location.protocol === "file:") {
       if (formStatus) {
-        formStatus.className = "form-status is-visible";
-        formStatus.textContent = "Submitting form...";
+        formStatus.className = "form-feedback is-visible";
+        formStatus.textContent = "Sending your message...";
       }
 
       if (submitButton) {
         submitButton.disabled = true;
-        submitButton.textContent = "Sending...";
+        submitButton.innerHTML = `<span>Sending...</span>`;
       }
 
-      return;
-    }
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/mohammadabushehada2@gmail.com", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+          },
+          body: formData,
+        });
 
-    event.preventDefault();
+        const result = await response.json();
 
-    if (formStatus) {
-      formStatus.className = "form-status is-visible";
-      formStatus.textContent = "Sending message...";
-    }
+        if (!response.ok || result.success === "false") {
+          throw new Error(result.message || "Failed to send message.");
+        }
 
-    if (submitButton) {
-      submitButton.disabled = true;
-      submitButton.textContent = "Sending...";
-    }
+        if (formStatus) {
+          formStatus.className = "form-feedback is-visible is-success";
+          formStatus.textContent = "Thank you! Your message was sent successfully. I will get back to you soon.";
+        }
 
-    try {
-      const response = await fetch("https://formsubmit.co/ajax/mohammadabushehada2@gmail.com", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-        },
-        body: formData,
-      });
+        contactForm.reset();
+      } catch (error) {
+        const name = (formData.get("name") || "").toString().trim();
+        const email = (formData.get("email") || "").toString().trim();
+        const message = (formData.get("message") || "").toString().trim();
+        const subject = encodeURIComponent(`Portfolio inquiry from ${name || "Visitor"}`);
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
 
-      const result = await response.json();
+        if (formStatus) {
+          formStatus.className = "form-feedback is-visible is-error";
+          formStatus.textContent = "Direct sending encountered an issue. Redirecting to your email client as fallback...";
+        }
 
-      if (!response.ok || result.success === "false") {
-        throw new Error(result.message || "Unable to send the message right now.");
+        setTimeout(() => {
+          window.location.href = `mailto:mohammadabushehada2@gmail.com?subject=${subject}&body=${body}`;
+        }, 1200);
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.innerHTML = `<span>Send Message</span> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>`;
+        }
       }
-
-      if (formStatus) {
-        formStatus.className = "form-status is-visible is-success";
-        formStatus.textContent = "Your message was sent successfully.";
-      }
-
-      contactForm.reset();
-    } catch (error) {
-      const name = (formData.get("name") || "").toString().trim();
-      const email = (formData.get("email") || "").toString().trim();
-      const message = (formData.get("message") || "").toString().trim();
-      const subject = encodeURIComponent(`Portfolio message from ${name || "Website Visitor"}`);
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-
-      if (formStatus) {
-        formStatus.className = "form-status is-visible is-error";
-        formStatus.textContent = "Direct sending failed on this browser. Opening your email app as a fallback.";
-      }
-
-      window.location.href = `mailto:mohammadabushehada2@gmail.com?subject=${subject}&body=${body}`;
-    } finally {
-      if (submitButton) {
-        submitButton.disabled = false;
-        submitButton.textContent = "Send Message";
-      }
-    }
-  });
-}
+    });
+  }
+});
