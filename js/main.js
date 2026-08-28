@@ -1,10 +1,96 @@
 /**
  * MOHAMMAD ABUSHEHADA — PORTFOLIO JAVASCRIPT
- * Smooth Theme Switcher, Spotlight Effect, Project Filters & Form Handling
+ * Interactive 0-100% Preloader, Custom Cursor, Spotlight Glow, Theme Toggle & Filters
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ─── 1. THEME SWITCHER (Dark / Light) ──────────────────────────
+  // ─── 1. INTERACTIVE PRELOADER (0% -> 100%) ──────────────────────
+  const preloader = document.getElementById("site-preloader");
+  const preloaderBar = document.getElementById("preloader-bar");
+  const preloaderPercent = document.getElementById("preloader-percent");
+
+  if (preloader && preloaderBar && preloaderPercent) {
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += Math.floor(Math.random() * 8) + 4;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(interval);
+        preloaderBar.style.width = "100%";
+        preloaderPercent.textContent = "100%";
+
+        setTimeout(() => {
+          preloader.classList.add("loaded");
+          // Trigger visible reveal animations for hero section
+          document.querySelectorAll(".hero-section .reveal").forEach((el) => {
+            el.classList.add("is-visible");
+          });
+        }, 300);
+      } else {
+        preloaderBar.style.width = `${progress}%`;
+        preloaderPercent.textContent = `${progress}%`;
+      }
+    }, 28);
+  }
+
+  // ─── 2. INTERACTIVE CUSTOM CURSOR ──────────────────────────────
+  const cursorDot = document.getElementById("cursor-dot");
+  const cursorRing = document.getElementById("cursor-ring");
+
+  if (cursorDot && cursorRing && window.matchMedia("(pointer: fine)").matches) {
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ringX = mouseX;
+    let ringY = mouseY;
+    let isVisible = false;
+
+    window.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      cursorDot.style.left = `${mouseX}px`;
+      cursorDot.style.top = `${mouseY}px`;
+
+      if (!isVisible) {
+        cursorDot.style.opacity = "1";
+        cursorRing.style.opacity = "1";
+        isVisible = true;
+      }
+    });
+
+    document.addEventListener("mouseleave", () => {
+      cursorDot.style.opacity = "0";
+      cursorRing.style.opacity = "0";
+      isVisible = false;
+    });
+
+    function updateCursorRing() {
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+
+      cursorRing.style.left = `${ringX}px`;
+      cursorRing.style.top = `${ringY}px`;
+
+      requestAnimationFrame(updateCursorRing);
+    }
+    requestAnimationFrame(updateCursorRing);
+
+    // Hover effect on interactive elements
+    const interactiveElements = document.querySelectorAll(
+      "a, button, input, textarea, .project-card, .skill-card, .info-card, .cert-item, .filter-tab"
+    );
+
+    interactiveElements.forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        document.body.classList.add("cursor-hover");
+      });
+      el.addEventListener("mouseleave", () => {
+        document.body.classList.remove("cursor-hover");
+      });
+    });
+  }
+
+  // ─── 3. THEME SWITCHER (Dark / Light) ──────────────────────────
   const themeToggleBtn = document.getElementById("theme-toggle");
   const htmlRoot = document.documentElement;
 
@@ -31,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
       htmlRoot.classList.remove("theming");
-    }, 400);
+    }, 380);
   }
 
   if (themeToggleBtn) {
@@ -40,39 +126,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initTheme();
 
-  // ─── 2. MOUSE SPOTLIGHT GLOW (Lightweight 60fps) ───────────────
+  // ─── 4. MOUSE SPOTLIGHT GLOW ───────────────────────────────────
   const spotlight = document.getElementById("cursor-spotlight");
   if (spotlight && window.matchMedia("(pointer: fine)").matches) {
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let currentX = mouseX;
-    let currentY = mouseY;
-    let isMoving = false;
+    let spotMouseX = window.innerWidth / 2;
+    let spotMouseY = window.innerHeight / 2;
+    let spotCurrentX = spotMouseX;
+    let spotCurrentY = spotMouseY;
+    let isSpotActive = false;
 
     window.addEventListener("mousemove", (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      if (!isMoving) {
+      spotMouseX = e.clientX;
+      spotMouseY = e.clientY;
+      if (!isSpotActive) {
         spotlight.style.opacity = "1";
-        isMoving = true;
+        isSpotActive = true;
       }
     });
 
     document.addEventListener("mouseleave", () => {
       spotlight.style.opacity = "0";
-      isMoving = false;
+      isSpotActive = false;
     });
 
     function renderSpotlight() {
-      currentX += (mouseX - currentX) * 0.15;
-      currentY += (mouseY - currentY) * 0.15;
-      spotlight.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+      spotCurrentX += (spotMouseX - spotCurrentX) * 0.12;
+      spotCurrentY += (spotMouseY - spotCurrentY) * 0.12;
+      spotlight.style.transform = `translate3d(${spotCurrentX}px, ${spotCurrentY}px, 0)`;
       requestAnimationFrame(renderSpotlight);
     }
     requestAnimationFrame(renderSpotlight);
   }
 
-  // ─── 3. NAVBAR SCROLL EFFECT & MOBILE CLOSE ────────────────────
+  // ─── 5. NAVBAR SCROLL & MOBILE CLOSE ───────────────────────────
   const navbar = document.getElementById("main-navbar");
   const navCollapse = document.getElementById("mainNav");
   const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
@@ -96,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ─── 4. INTERSECTION OBSERVER REVEALS ──────────────────────────
+  // ─── 6. INTERSECTION OBSERVER REVEALS ──────────────────────────
   const reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
     const revealObserver = new IntersectionObserver(
@@ -109,18 +195,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       },
       {
-        threshold: 0.12,
+        threshold: 0.1,
         rootMargin: "0px 0px -30px 0px",
       }
     );
 
     reveals.forEach((item) => revealObserver.observe(item));
   } else {
-    // Fallback if IntersectionObserver is unsupported
     reveals.forEach((item) => item.classList.add("is-visible"));
   }
 
-  // ─── 5. PROJECT CATEGORY FILTERING ────────────────────────────
+  // ─── 7. PROJECT CATEGORY FILTERING ────────────────────────────
   const filterTabs = document.querySelectorAll(".filter-tab");
   const projectItems = document.querySelectorAll(".project-item");
 
@@ -146,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ─── 6. CONTACT FORM ASYNC SUBMISSION ──────────────────────────
+  // ─── 8. CONTACT FORM ASYNC SUBMISSION ──────────────────────────
   const contactForm = document.getElementById("contact-form");
   const formStatus = document.getElementById("form-status");
 
@@ -155,11 +240,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const formData = new FormData(contactForm);
       const submitButton = contactForm.querySelector('button[type="submit"]');
 
-      // Local file preview bypass
       if (window.location.protocol === "file:") {
         if (formStatus) {
           formStatus.className = "form-feedback is-visible is-success";
-          formStatus.textContent = "Form is running locally. In production, this sends an email via FormSubmit.";
+          formStatus.textContent = "Running locally. In production, this delivers messages via FormSubmit.";
         }
         return;
       }
@@ -193,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (formStatus) {
           formStatus.className = "form-feedback is-visible is-success";
-          formStatus.textContent = "Thank you! Your message was sent successfully. I will get back to you soon.";
+          formStatus.textContent = "Thank you! Your message has been sent successfully.";
         }
 
         contactForm.reset();
@@ -206,7 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (formStatus) {
           formStatus.className = "form-feedback is-visible is-error";
-          formStatus.textContent = "Direct sending encountered an issue. Redirecting to your email client as fallback...";
+          formStatus.textContent = "Direct submission encountered an error. Opening email client fallback...";
         }
 
         setTimeout(() => {

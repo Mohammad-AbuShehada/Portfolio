@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohammad Abushehada | Full Stack Web Developer & Software Engineer</title>
+  <title>Mohammad Abushehada | Full Stack Software Engineer</title>
   <meta
     name="description"
-    content="Portfolio of Mohammad Abushehada — Full Stack Web Developer specializing in React and ASP.NET Core Web API, AI solutions with PyTorch, and clean software engineering."
+    content="Portfolio of Mohammad Abushehada — Full Stack Software Engineer specializing in React, ASP.NET Core, and intelligent web systems."
   >
+
   <!-- Anti-flash script for instant theme load -->
   <script>
     (function () {
@@ -23,10 +24,10 @@
     })();
   </script>
 
-  <!-- Google Fonts -->
+  <!-- Modern Clean Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +36,25 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Ambient Spotlight & Background Atmosphere -->
+  <!-- Interactive Preloader 0 -> 100% -->
+  <div class="site-preloader" id="site-preloader">
+    <div class="preloader-content">
+      <div class="preloader-logo">MA</div>
+      <div class="preloader-bar-wrap">
+        <div class="preloader-bar" id="preloader-bar"></div>
+      </div>
+      <div class="preloader-status">
+        <span class="preloader-text">Loading Experience</span>
+        <span class="preloader-percent" id="preloader-percent">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Custom Cursor -->
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Ambient Glow & Spotlight -->
   <div class="ambient-glow" aria-hidden="true"></div>
   <div class="cursor-spotlight" id="cursor-spotlight" aria-hidden="true"></div>
 
@@ -53,7 +72,7 @@
             <!-- Theme Toggle Button -->
             <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark theme">
               <!-- Sun Icon -->
-              <svg class="theme-icon icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="theme-icon icon-sun" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="5"></circle>
                 <line x1="12" y1="1" x2="12" y2="3"></line>
                 <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -65,7 +84,7 @@
                 <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
               </svg>
               <!-- Moon Icon -->
-              <svg class="theme-icon icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="theme-icon icon-moon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
               </svg>
             </button>
@@ -77,7 +96,7 @@
           </div>
 
           <div class="collapse navbar-collapse order-lg-2" id="mainNav">
-            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
               <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
               <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
               <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
@@ -95,46 +114,38 @@
       <div class="container hero-content">
         <div class="row align-items-center g-5">
           <div class="col-lg-7">
-            <!-- Status Badge -->
             <div class="badge-status reveal reveal-up">
               <span class="status-dot"></span>
-              <span>Available for Full-Time Roles & Engineering Projects</span>
+              <span>Available for Software Engineering Roles</span>
             </div>
             
             <h1 class="hero-title reveal reveal-up">
-              Building scalable <span class="gradient-text">web applications</span> & intelligent software.
+              Full Stack Engineer crafting <span class="gradient-text">scalable web systems</span> & modern interfaces.
             </h1>
             
             <p class="hero-lead reveal reveal-up">
-              Hi, I’m <strong>Mohammad Abushehada</strong> — a Computer Science graduate specializing in Full Stack Web Development with <strong>React</strong> and <strong>ASP.NET Core</strong>. I design clean architectures, high-performance APIs, responsive user experiences, and machine learning solutions.
+              Hi, I’m <strong>Mohammad Abushehada</strong>. I build robust full-stack applications with <strong>React</strong> and <strong>ASP.NET Core</strong>, with strong foundations in database architecture, clean APIs, and algorithmic problem solving.
             </p>
             
             <div class="hero-actions reveal reveal-up">
               <a class="btn btn-primary btn-lg" href="#projects">
-                <span>Explore Projects</span>
+                <span>View Selected Work</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
               <a class="btn btn-outline-custom btn-lg" href="#contact">Contact Me</a>
-              <a class="btn btn-ghost btn-lg" href="https://github.com/Mohammad-AbuShehada" target="_blank" rel="noreferrer" title="GitHub Profile">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <a class="btn btn-ghost btn-lg" href="https://github.com/Mohammad-AbuShehada" target="_blank" rel="noreferrer">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                 <span>GitHub</span>
               </a>
             </div>
 
-            <!-- Key Quick Metrics -->
-            <div class="hero-metrics reveal reveal-up">
-              <div class="metric-card">
-                <div class="metric-num">2026</div>
-                <div class="metric-desc">Computer Science Graduate (GPA 3.16)</div>
-              </div>
-              <div class="metric-card">
-                <div class="metric-num">8+</div>
-                <div class="metric-desc">Full-Stack, AI & Backend Builds</div>
-              </div>
-              <div class="metric-card">
-                <div class="metric-num">L2</div>
-                <div class="metric-desc">Problem Solving Instructor & Mentor</div>
-              </div>
+            <div class="tech-pills-row reveal reveal-up">
+              <span class="hero-tech-tag">React</span>
+              <span class="hero-tech-tag">ASP.NET Core</span>
+              <span class="hero-tech-tag">PostgreSQL</span>
+              <span class="hero-tech-tag">Zustand</span>
+              <span class="hero-tech-tag">Docker</span>
+              <span class="hero-tech-tag">C# &bull; Python</span>
             </div>
           </div>
 
@@ -142,10 +153,10 @@
             <div class="portrait-container reveal reveal-right">
               <div class="portrait-backdrop"></div>
               <div class="portrait-card">
-                <img src="img/mohammad_abushehada.png" alt="Portrait of Mohammad Abushehada" class="portrait-img">
+                <img src="img/mohammad_abushehada.png" alt="Mohammad Abushehada" class="portrait-img">
                 <div class="portrait-badge">
-                  <span class="badge-role">Full Stack Developer</span>
-                  <span class="badge-tech">React &bull; ASP.NET Core &bull; PyTorch</span>
+                  <span class="badge-role">Full Stack Engineer</span>
+                  <span class="badge-tech">React &bull; ASP.NET Core &bull; Cloud APIs</span>
                 </div>
               </div>
             </div>
@@ -161,26 +172,25 @@
         <div class="container">
           <div class="section-header reveal reveal-up">
             <span class="section-tag">About Me</span>
-            <h2 class="section-title">Practical Mindset, Clean Architecture & Strong Foundations</h2>
-            <p class="section-subtitle">A balanced engineer bridging backend robustness, intelligent models, and polished user interfaces.</p>
+            <h2 class="section-title">Clean Architecture & Engineering Mindset</h2>
+            <p class="section-subtitle">Bridging backend reliability, modern frontend interfaces, and algorithmic problem solving.</p>
           </div>
 
           <div class="row g-4 align-items-stretch">
             <div class="col-lg-7">
               <div class="glass-box h-100 reveal reveal-left">
-                <h3 class="glass-title">Engineering Philosophy</h3>
+                <h3 class="glass-title">Engineering Focus</h3>
                 <p>
-                  I specialize in building complete web applications from database schema design and secure backend REST APIs to modern, interactive frontend interfaces. My primary tools of choice are <strong>React</strong> on the client and <strong>ASP.NET Core Web API</strong> with <strong>Entity Framework Core</strong> on the server.
+                  I build end-to-end web applications with a focus on maintainable software architecture. On the frontend, I create responsive, component-driven user interfaces using <strong>React</strong>, <strong>Material UI</strong>, and modern state managers like <strong>Zustand</strong> and <strong>TanStack Query</strong>.
                 </p>
                 <p>
-                  Beyond web development, I have a deep passion for <strong>Algorithms, Data Structures, and Problem Solving</strong>. Teaching these topics as an instructor reinforced my appreciation for writing clean, efficient, and well-tested code. I also explore machine learning and AI applications with <strong>PyTorch</strong>.
+                  On the backend, I design secure, high-throughput RESTful APIs using <strong>ASP.NET Core</strong>, <strong>Entity Framework Core</strong>, and relational databases like <strong>PostgreSQL</strong> and <strong>SQL Server</strong>. My algorithmic training as a Problem Solving Instructor guides my attention to efficiency and clean code.
                 </p>
                 <div class="about-highlights">
                   <span class="highlight-chip">Full Stack Architecture</span>
                   <span class="highlight-chip">REST APIs & JWT Auth</span>
-                  <span class="highlight-chip">Modern State Management</span>
-                  <span class="highlight-chip">Algorithmic Problem Solving</span>
                   <span class="highlight-chip">Relational Database Design</span>
+                  <span class="highlight-chip">Data Structures & Algorithms</span>
                 </div>
               </div>
             </div>
@@ -188,16 +198,20 @@
             <div class="col-lg-5">
               <div class="info-cards-stack h-100 reveal reveal-right">
                 <div class="info-card">
-                  <div class="info-icon">🎓</div>
+                  <div class="info-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                  </div>
                   <div class="info-content">
-                    <span class="info-title">Education</span>
+                    <span class="info-title">Degree</span>
                     <strong>Bachelor of Computer Science</strong>
-                    <small>Arab American University Palestine (2026) | GPA: 3.16 / 4.0</small>
+                    <small>Arab American University Palestine</small>
                   </div>
                 </div>
 
                 <div class="info-card">
-                  <div class="info-icon">📍</div>
+                  <div class="info-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                  </div>
                   <div class="info-content">
                     <span class="info-title">Location & Languages</span>
                     <strong>Jenin, Palestine</strong>
@@ -206,11 +220,13 @@
                 </div>
 
                 <div class="info-card">
-                  <div class="info-icon">⚡</div>
+                  <div class="info-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                  </div>
                   <div class="info-content">
                     <span class="info-title">Core Stack</span>
-                    <strong>React, ASP.NET Core, PostgreSQL, PyTorch</strong>
-                    <small>C#, Python, JavaScript (ES6+), Zustand, TanStack Query</small>
+                    <strong>React, ASP.NET Core, PostgreSQL</strong>
+                    <small>C#, Python, JavaScript, Zustand, Docker</small>
                   </div>
                 </div>
               </div>
@@ -223,9 +239,9 @@
       <section class="section-block section-tinted" id="experience">
         <div class="container">
           <div class="section-header reveal reveal-up">
-            <span class="section-tag">Career & Experience</span>
-            <h2 class="section-title">Professional Experience & Teaching</h2>
-            <p class="section-subtitle">Real-world internships, hands-on development programs, and technical instructor roles.</p>
+            <span class="section-tag">Career & Leadership</span>
+            <h2 class="section-title">Experience & Mentorship</h2>
+            <p class="section-subtitle">Real-world development experience, team leadership, and instructional roles.</p>
           </div>
 
           <div class="timeline-wrapper">
@@ -235,19 +251,15 @@
               <div class="timeline-card">
                 <div class="timeline-header">
                   <div>
-                    <span class="timeline-badge badge-teaching">Teaching & Mentorship</span>
+                    <span class="timeline-badge badge-teaching">Teaching</span>
                     <h3 class="timeline-role">Problem Solving Instructor</h3>
                     <div class="timeline-company">IT Club &bull; Arab American University</div>
                   </div>
-                  <div class="timeline-period">Instructor Role</div>
+                  <div class="timeline-period">Recent</div>
                 </div>
                 <p class="timeline-text">
-                  Designed and delivered a comprehensive Problem Solving Level 2 curriculum for university students. Prepared structured lectures, algorithmic problem sets, and competitive contests.
+                  Delivered Problem Solving Level 2 training covering data structures and algorithms (Stack, Queue, Priority Queue, Binary Search, Prefix Sum, Greedy, Two Pointers, and Bitwise operations).
                 </p>
-                <ul class="timeline-points">
-                  <li>Taught essential algorithms and data structures: Stack, Queue, Priority Queue, Binary Search, Prefix Sum, Set, Maps, Greedy, Two Pointers, and Bitwise operations.</li>
-                  <li>Mentored participating students, tracked learning curves, and evaluated competition problem submissions.</li>
-                </ul>
               </div>
             </article>
 
@@ -259,18 +271,13 @@
                   <div>
                     <span class="timeline-badge badge-internship">Internship</span>
                     <h3 class="timeline-role">Frontend Development Intern</h3>
-                    <div class="timeline-company">ASAL Technologies &bull; 4 Months</div>
+                    <div class="timeline-company">ASAL Technologies</div>
                   </div>
                   <div class="timeline-period">4 Months</div>
                 </div>
                 <p class="timeline-text">
-                  Gained intensive hands-on experience in a structured agile development team, building responsive web interfaces and strengthening frontend fundamentals.
+                  Developed responsive web interfaces, applied structured Git workflows in an agile team environment, and strengthened modern React component development.
                 </p>
-                <ul class="timeline-points">
-                  <li>Developed responsive web pages using modern HTML5, CSS3, and JavaScript (ES6+).</li>
-                  <li>Collaborated using Git & GitHub workflows for code reviews and version management.</li>
-                  <li>Deepened knowledge in React fundamentals, reusable UI components, and modern frontend practices.</li>
-                </ul>
               </div>
             </article>
 
@@ -280,19 +287,15 @@
               <div class="timeline-card">
                 <div class="timeline-header">
                   <div>
-                    <span class="timeline-badge badge-training">Training Project</span>
-                    <h3 class="timeline-role">Frontend Training Specialist</h3>
+                    <span class="timeline-badge badge-training">Training</span>
+                    <h3 class="timeline-role">Frontend Training Project</h3>
                     <div class="timeline-company">Knowledge Academy</div>
                   </div>
                   <div class="timeline-period">Completed</div>
                 </div>
                 <p class="timeline-text">
-                  Engineered an end-to-end React storefront application as the capstone graduation project.
+                  Built an end-to-end React storefront with reusable UI architecture, REST API integrations, and responsive design principles.
                 </p>
-                <ul class="timeline-points">
-                  <li>Designed modular component architecture and integrated external RESTful APIs.</li>
-                  <li>Focused on seamless responsive design, UX consistency, and optimized data flows.</li>
-                </ul>
               </div>
             </article>
 
@@ -309,7 +312,7 @@
                   <div class="timeline-period">Leadership</div>
                 </div>
                 <p class="timeline-text">
-                  Led technical coordination for club activities, organized technical workshops (including gem5 simulation concepts), and improved collaborative workflows within student teams.
+                  Coordinated technical initiatives, organized student workshops, and improved collaboration and task distribution across project teams.
                 </p>
               </div>
             </article>
@@ -321,17 +324,17 @@
       <section class="section-block" id="projects">
         <div class="container">
           <div class="section-header reveal reveal-up">
-            <span class="section-tag">Featured Work</span>
-            <h2 class="section-title">Selected Projects & Architecture Builds</h2>
-            <p class="section-subtitle">Explore selected projects across Full-Stack Web, Backend Services, AI/Machine Learning, and Frontend applications.</p>
+            <span class="section-tag">Portfolio</span>
+            <h2 class="section-title">Selected Projects & Systems</h2>
+            <p class="section-subtitle">A curated selection of full-stack platforms, backend microservices, AI models, and web applications.</p>
           </div>
 
           <!-- Project Filter Tabs -->
-          <div class="project-filters reveal reveal-up" role="tablist" aria-label="Project filter tabs">
+          <div class="project-filters reveal reveal-up" role="tablist" aria-label="Project filters">
             <button class="filter-tab is-active" type="button" data-filter="all">All Projects</button>
             <button class="filter-tab" type="button" data-filter="fullstack">Full Stack & Backend</button>
             <button class="filter-tab" type="button" data-filter="ai">AI & Machine Learning</button>
-            <button class="filter-tab" type="button" data-filter="frontend">Frontend Web</button>
+            <button class="filter-tab" type="button" data-filter="frontend">Frontend</button>
             <button class="filter-tab" type="button" data-filter="data">Data & QA</button>
           </div>
 
@@ -343,29 +346,28 @@
               <article class="project-card featured-card h-100">
                 <div class="card-top">
                   <span class="project-category-tag">Featured Full-Stack</span>
-                  <div class="project-stars">★ System Architecture</div>
+                  <div class="project-stars">Production Build</div>
                 </div>
                 <h3 class="project-name">Course Points Management System</h3>
                 <p class="project-description">
-                  A comprehensive, production-grade course administration platform built from scratch to replace legacy Excel tracking with automated workflows, real-time leaderboards, and role-based security.
+                  Full-stack course administration platform replacing manual spreadsheets with automated workflows, real-time leaderboards, attendance tracking, and CSV exports.
                 </p>
                 <div class="project-features-list">
                   <span>JWT & Refresh Tokens</span>
                   <span>Role-Based Auth</span>
-                  <span>Attendance & Points Tracking</span>
+                  <span>Attendance & Points</span>
                   <span>CSV Export Engine</span>
                 </div>
                 <div class="project-tech-stack">
                   <span class="tech-pill">React</span>
-                  <span class="tech-pill">ASP.NET Core Web API</span>
+                  <span class="tech-pill">ASP.NET Core</span>
                   <span class="tech-pill">PostgreSQL (Neon)</span>
                   <span class="tech-pill">Material UI</span>
                   <span class="tech-pill">Zustand</span>
-                  <span class="tech-pill">Render</span>
                 </div>
                 <div class="project-footer">
                   <a class="btn-project btn-video-demo" href="https://www.linkedin.com/posts/mohammad-abushehada_softwareengineering-webdevelopment-aspnet-activity-7474705874331025408-t-xp?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFOtYiEBsFTELYAN6kNxhGPv963lik_-8Yo" target="_blank" rel="noreferrer">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                     <span>Watch Video Demo</span>
                   </a>
                 </div>
@@ -376,11 +378,11 @@
             <div class="col-lg-6 project-item" data-category="fullstack">
               <article class="project-card h-100">
                 <div class="card-top">
-                  <span class="project-category-tag">Backend & Systems</span>
+                  <span class="project-category-tag">Backend Service</span>
                 </div>
                 <h3 class="project-name">Log Ingestion & Query Service</h3>
                 <p class="project-description">
-                  High-throughput backend service engineered in ASP.NET Core for structured log ingestion and fast analytical queries, supporting rich metadata filters, timestamp range searches, and structured metrics.
+                  High-throughput backend service in ASP.NET Core for structured log ingestion and fast analytical queries, supporting rich metadata filters and timestamp range searches.
                 </p>
                 <div class="project-features-list">
                   <span>Structured Ingestion</span>
@@ -393,11 +395,10 @@
                   <span class="tech-pill">ASP.NET Core</span>
                   <span class="tech-pill">REST APIs</span>
                   <span class="tech-pill">LINQ</span>
-                  <span class="tech-pill">In-Memory Store</span>
                 </div>
                 <div class="project-footer">
                   <a class="btn-project btn-secondary" href="https://github.com/Mohammad-AbuShehada/log-ingestion-query-service" target="_blank" rel="noreferrer">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     <span>View GitHub Repo</span>
                   </a>
                 </div>
@@ -412,31 +413,30 @@
                 </div>
                 <h3 class="project-name">Handwritten Digit Recognition CNN</h3>
                 <p class="project-description">
-                  Convolutional Neural Network (CNN) built in PyTorch for classifying handwritten digits with high accuracy. Implements custom PyTorch datasets, convolutional & pooling layers, loss optimization, and evaluation metrics.
+                  Convolutional Neural Network built with PyTorch for MNIST handwritten digit recognition, featuring data pipeline preprocessing, training optimization, and model evaluation.
                 </p>
                 <div class="project-features-list">
-                  <span>PyTorch Model Architecture</span>
+                  <span>PyTorch Architecture</span>
                   <span>MNIST Benchmark</span>
                   <span>Data Augmentation</span>
-                  <span>Loss & Accuracy Metrics</span>
+                  <span>Accuracy Metrics</span>
                 </div>
                 <div class="project-tech-stack">
                   <span class="tech-pill">PyTorch</span>
                   <span class="tech-pill">Python</span>
                   <span class="tech-pill">CNN</span>
-                  <span class="tech-pill">Computer Vision</span>
                   <span class="tech-pill">Deep Learning</span>
                 </div>
                 <div class="project-footer">
                   <a class="btn-project btn-secondary" href="https://github.com/Mohammad-AbuShehada/handwritten-digit-cnn-pytorch" target="_blank" rel="noreferrer">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     <span>View GitHub Repo</span>
                   </a>
                 </div>
               </article>
             </div>
 
-            <!-- Project 4: CS Hub – Student Platform (Updated to React) -->
+            <!-- Project 4: CS Hub – Student Platform (Updated React Edition) -->
             <div class="col-lg-6 project-item" data-category="frontend">
               <article class="project-card h-100">
                 <div class="card-top">
@@ -444,25 +444,24 @@
                 </div>
                 <h3 class="project-name">CS Hub – Student Support Platform</h3>
                 <p class="project-description">
-                  Modernized student portal built with React and Material UI. Provides organized course study materials, exam summaries, and lecture references for Computer Science students at Arab American University.
+                  Modern academic portal built with React and Material UI, providing organized study materials, course summaries, and lecture references for Computer Science students.
                 </p>
                 <div class="project-features-list">
                   <span>Modular React UI</span>
-                  <span>Dynamic Content APIs</span>
-                  <span>Fast Material UI Navigation</span>
-                  <span>Student Community Portal</span>
+                  <span>Material UI</span>
+                  <span>Dynamic Content</span>
+                  <span>Community Portal</span>
                 </div>
                 <div class="project-tech-stack">
                   <span class="tech-pill">React</span>
                   <span class="tech-pill">Material UI</span>
-                  <span class="tech-pill">JavaScript (ES6+)</span>
+                  <span class="tech-pill">JavaScript</span>
                   <span class="tech-pill">Axios</span>
-                  <span class="tech-pill">Render</span>
                 </div>
                 <div class="project-footer">
                   <a class="btn-project btn-primary-custom" href="https://aaup-computer-science.onrender.com/" target="_blank" rel="noreferrer">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                    <span>Live Web App</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    <span>Live App</span>
                   </a>
                   <a class="btn-project btn-ghost-link" href="https://github.com/Mohammad-AbuShehada/AAUP---Computer-Science" target="_blank" rel="noreferrer">
                     <span>GitHub</span>
@@ -475,28 +474,27 @@
             <div class="col-lg-6 project-item" data-category="frontend">
               <article class="project-card h-100">
                 <div class="card-top">
-                  <span class="project-category-tag">E-Commerce Frontend</span>
+                  <span class="project-category-tag">E-Commerce</span>
                 </div>
                 <h3 class="project-name">Moon Storefront</h3>
                 <p class="project-description">
-                  Polished e-commerce storefront crafted with React and Material UI. Features complete product browsing, detailed views, shopping cart & checkout flows, wishlist, user profiles, and bilingual/theme support.
+                  Responsive e-commerce storefront with product catalogs, detailed views, cart & checkout workflows, wishlist, user profiles, and theme personalization.
                 </p>
                 <div class="project-features-list">
-                  <span>Light / Dark Mode</span>
-                  <span>State with Zustand</span>
-                  <span>TanStack React Query</span>
-                  <span>Protected Routing</span>
+                  <span>Light / Dark Theme</span>
+                  <span>Zustand State</span>
+                  <span>React Query</span>
+                  <span>Protected Routes</span>
                 </div>
                 <div class="project-tech-stack">
                   <span class="tech-pill">React</span>
                   <span class="tech-pill">Material UI</span>
                   <span class="tech-pill">Zustand</span>
                   <span class="tech-pill">React Query</span>
-                  <span class="tech-pill">Axios</span>
                 </div>
                 <div class="project-footer">
                   <a class="btn-project btn-primary-custom" href="https://react-project-uixb.onrender.com/" target="_blank" rel="noreferrer">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                     <span>Live Demo</span>
                   </a>
                 </div>
@@ -507,27 +505,27 @@
             <div class="col-lg-6 project-item" data-category="frontend">
               <article class="project-card h-100">
                 <div class="card-top">
-                  <span class="project-category-tag">Interactive Tracker</span>
+                  <span class="project-category-tag">Tracker Web App</span>
                 </div>
                 <h3 class="project-name">Ramadan Tracker</h3>
                 <p class="project-description">
-                  Daily worship and habit tracking application with interactive charts, weekly goal filters, dark mode styling, and persistent browser storage for personal progress analytics.
+                  Habit and worship progress application featuring interactive charts, weekly goal analytics, responsive design, and localStorage persistence.
                 </p>
                 <div class="project-features-list">
                   <span>Interactive Charts</span>
                   <span>Weekly Analytics</span>
-                  <span>Local Storage Persistence</span>
+                  <span>LocalStorage</span>
                   <span>Responsive UI</span>
                 </div>
                 <div class="project-tech-stack">
-                  <span class="tech-pill">JavaScript (ES6)</span>
+                  <span class="tech-pill">JavaScript</span>
                   <span class="tech-pill">HTML5</span>
                   <span class="tech-pill">CSS3</span>
                   <span class="tech-pill">Chart.js</span>
                 </div>
                 <div class="project-footer">
                   <a class="btn-project btn-primary-custom" href="https://mohammad-abushehada.github.io/ramadan-tracker/" target="_blank" rel="noreferrer">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                     <span>Live Demo</span>
                   </a>
                 </div>
@@ -542,13 +540,13 @@
                 </div>
                 <h3 class="project-name">Ecommerce Data Warehouse</h3>
                 <p class="project-description">
-                  Data warehouse architecture designed using Star Schema modeling in SQL Server. Built for clean dimensional modeling, ETL flows, and business intelligence reporting.
+                  Data warehouse architecture implemented using Star Schema modeling in SQL Server for clean dimensional modeling, analytical queries, and reporting.
                 </p>
                 <div class="project-features-list">
-                  <span>Star Schema Modeling</span>
+                  <span>Star Schema</span>
                   <span>SQL Server & SSMS</span>
                   <span>Analytical Queries</span>
-                  <span>Reporting Workflows</span>
+                  <span>ETL Modeling</span>
                 </div>
                 <div class="project-tech-stack">
                   <span class="tech-pill">SQL Server</span>
@@ -558,7 +556,7 @@
                 </div>
                 <div class="project-footer">
                   <a class="btn-project btn-secondary" href="https://github.com/Mohammad-AbuShehada/EcommerceDW_Project" target="_blank" rel="noreferrer">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     <span>View GitHub Repo</span>
                   </a>
                 </div>
@@ -569,16 +567,16 @@
             <div class="col-lg-6 project-item" data-category="data">
               <article class="project-card h-100">
                 <div class="card-top">
-                  <span class="project-category-tag">QA & Automation</span>
+                  <span class="project-category-tag">QA & Testing</span>
                 </div>
                 <h3 class="project-name">Software Testing & QA Automation</h3>
                 <p class="project-description">
-                  Comprehensive testing workflow covering manual test case execution, issue tracking, and Cypress automated end-to-end testing suites.
+                  Quality assurance workflow covering manual test case execution, issue tracking in Jira, and Cypress automated test suites for end-to-end reliability.
                 </p>
                 <div class="project-features-list">
                   <span>Cypress Automation</span>
                   <span>Manual Test Design</span>
-                  <span>Jira & Trello Tracking</span>
+                  <span>Jira & Trello</span>
                   <span>Bug Documentation</span>
                 </div>
                 <div class="project-tech-stack">
@@ -589,7 +587,7 @@
                 </div>
                 <div class="project-footer">
                   <a class="btn-project btn-primary-custom" href="https://www.youtube.com/watch?v=jQ39UCLYXL8" target="_blank" rel="noreferrer">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                     <span>Watch Test Demo</span>
                   </a>
                 </div>
@@ -605,8 +603,8 @@
         <div class="container">
           <div class="section-header reveal reveal-up">
             <span class="section-tag">Capabilities</span>
-            <h2 class="section-title">Technical Skills & Engineering Toolkit</h2>
-            <p class="section-subtitle">A comprehensive breakdown of technologies, frameworks, and engineering methodologies I leverage.</p>
+            <h2 class="section-title">Technical Skills & Toolkit</h2>
+            <p class="section-subtitle">Technologies, frameworks, and engineering tools leveraged across projects.</p>
           </div>
 
           <div class="row g-4">
@@ -614,20 +612,20 @@
             <div class="col-md-6 col-lg-4">
               <div class="skill-card reveal reveal-up">
                 <div class="skill-card-header">
-                  <div class="skill-icon">🎨</div>
+                  <div class="skill-icon-wrap">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                  </div>
                   <h3>Frontend & State</h3>
                 </div>
                 <div class="skill-badges">
                   <span class="skill-pill">React</span>
                   <span class="skill-pill">JavaScript (ES6+)</span>
                   <span class="skill-pill">Zustand</span>
-                  <span class="skill-pill">TanStack React Query</span>
+                  <span class="skill-pill">TanStack Query</span>
                   <span class="skill-pill">Material UI</span>
                   <span class="skill-pill">HTML5 & CSS3</span>
                   <span class="skill-pill">Bootstrap</span>
-                  <span class="skill-pill">React Router DOM</span>
                   <span class="skill-pill">Axios</span>
-                  <span class="skill-pill">Responsive Design</span>
                 </div>
               </div>
             </div>
@@ -636,18 +634,18 @@
             <div class="col-md-6 col-lg-4">
               <div class="skill-card reveal reveal-up">
                 <div class="skill-card-header">
-                  <div class="skill-icon">⚙️</div>
-                  <h3>Backend & Web API</h3>
+                  <div class="skill-icon-wrap">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                  </div>
+                  <h3>Backend & APIs</h3>
                 </div>
                 <div class="skill-badges">
                   <span class="skill-pill">ASP.NET Core Web API</span>
                   <span class="skill-pill">Entity Framework Core</span>
-                  <span class="skill-pill">RESTful API Design</span>
-                  <span class="skill-pill">JWT Authentication</span>
-                  <span class="skill-pill">Refresh Tokens</span>
+                  <span class="skill-pill">RESTful APIs</span>
+                  <span class="skill-pill">JWT & Refresh Tokens</span>
                   <span class="skill-pill">LINQ</span>
                   <span class="skill-pill">Role-Based Auth</span>
-                  <span class="skill-pill">Middleware Architecture</span>
                 </div>
               </div>
             </div>
@@ -656,14 +654,15 @@
             <div class="col-md-6 col-lg-4">
               <div class="skill-card reveal reveal-up">
                 <div class="skill-card-header">
-                  <div class="skill-icon">🗄️</div>
+                  <div class="skill-icon-wrap">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                  </div>
                   <h3>Database & Cloud</h3>
                 </div>
                 <div class="skill-badges">
                   <span class="skill-pill">PostgreSQL</span>
-                  <span class="skill-pill">Neon Serverless</span>
+                  <span class="skill-pill">Neon Cloud</span>
                   <span class="skill-pill">SQL Server</span>
-                  <span class="skill-pill">Data Warehousing</span>
                   <span class="skill-pill">Docker</span>
                   <span class="skill-pill">Vite</span>
                   <span class="skill-pill">Render</span>
@@ -676,8 +675,10 @@
             <div class="col-md-6 col-lg-4">
               <div class="skill-card reveal reveal-up">
                 <div class="skill-card-header">
-                  <div class="skill-icon">💻</div>
-                  <h3>Programming Languages</h3>
+                  <div class="skill-icon-wrap">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                  </div>
+                  <h3>Languages</h3>
                 </div>
                 <div class="skill-badges">
                   <span class="skill-pill">C#</span>
@@ -694,16 +695,17 @@
             <div class="col-md-6 col-lg-4">
               <div class="skill-card reveal reveal-up">
                 <div class="skill-card-header">
-                  <div class="skill-icon">🧠</div>
-                  <h3>AI, Algorithms & QA</h3>
+                  <div class="skill-icon-wrap">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                  </div>
+                  <h3>Problem Solving & AI</h3>
                 </div>
                 <div class="skill-badges">
                   <span class="skill-pill">PyTorch (CNN)</span>
                   <span class="skill-pill">Algorithms & Data Structures</span>
-                  <span class="skill-pill">Problem Solving</span>
-                  <span class="skill-pill">Object-Oriented Design (OOP)</span>
+                  <span class="skill-pill">OOP Design</span>
                   <span class="skill-pill">Cypress Testing</span>
-                  <span class="skill-pill">Manual Testing</span>
+                  <span class="skill-pill">Manual QA</span>
                 </div>
               </div>
             </div>
@@ -712,16 +714,17 @@
             <div class="col-md-6 col-lg-4">
               <div class="skill-card reveal reveal-up">
                 <div class="skill-card-header">
-                  <div class="skill-icon">🛠️</div>
-                  <h3>Workflow & Versioning</h3>
+                  <div class="skill-icon-wrap">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                  </div>
+                  <h3>Tools & Workflow</h3>
                 </div>
                 <div class="skill-badges">
-                  <span class="skill-pill">Git</span>
-                  <span class="skill-pill">GitHub</span>
-                  <span class="skill-pill">VS Code & Visual Studio</span>
+                  <span class="skill-pill">Git & GitHub</span>
+                  <span class="skill-pill">VS Code</span>
+                  <span class="skill-pill">Visual Studio</span>
                   <span class="skill-pill">Jira & Trello</span>
-                  <span class="skill-pill">Team Collaboration</span>
-                  <span class="skill-pill">Agile Principles</span>
+                  <span class="skill-pill">Agile Collaboration</span>
                 </div>
               </div>
             </div>
@@ -729,25 +732,24 @@
         </div>
       </section>
 
-      <!-- Education, Certifications & Achievements Section -->
+      <!-- Education & Certifications Section -->
       <section class="section-block" id="education">
         <div class="container">
           <div class="section-header reveal reveal-up">
-            <span class="section-tag">Milestones</span>
-            <h2 class="section-title">Education, Certifications & Achievements</h2>
-            <p class="section-subtitle">Academic foundations, competitive programming achievements, and continuous technical certifications.</p>
+            <span class="section-tag">Credentials</span>
+            <h2 class="section-title">Education & Certifications</h2>
+            <p class="section-subtitle">Academic foundations, competitive programming achievements, and certifications.</p>
           </div>
 
           <div class="row g-4">
-            <!-- Academic Degree Card -->
+            <!-- Degree Card -->
             <div class="col-lg-6">
               <div class="degree-card reveal reveal-left h-100">
                 <div class="degree-badge">Degree Program</div>
                 <h3 class="degree-title">Bachelor of Computer Science</h3>
                 <div class="degree-institution">Arab American University Palestine (AAUP)</div>
                 <div class="degree-meta">
-                  <span class="meta-pill">Graduation: 2026</span>
-                  <span class="meta-pill highlight-pill">GPA: 3.16 / 4.0</span>
+                  <span class="meta-pill highlight-pill">Graduation: 2026</span>
                 </div>
                 <p class="degree-desc">
                   Focused on Software Engineering, Data Structures, Relational Database Systems, Operating Systems, Computer Networks, and Artificial Intelligence foundations.
@@ -755,12 +757,14 @@
               </div>
             </div>
 
-            <!-- Certifications List Grid -->
+            <!-- Certifications -->
             <div class="col-lg-6">
               <div class="row g-3">
                 <div class="col-12">
                   <div class="cert-item reveal reveal-right">
-                    <div class="cert-icon">🏆</div>
+                    <div class="cert-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                    </div>
                     <div class="cert-content">
                       <span class="cert-type">Competitive Programming</span>
                       <h4>Problem Solving Level 3</h4>
@@ -771,7 +775,9 @@
 
                 <div class="col-12">
                   <div class="cert-item reveal reveal-right">
-                    <div class="cert-icon">🤖</div>
+                    <div class="cert-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.93V17a1 1 0 0 1-2 0v-.07A8 8 0 0 1 4.07 11H4a1 1 0 0 1 0-2h.07A8 8 0 0 1 11 4.07V4a1 1 0 0 1 2 0v.07A8 8 0 0 1 19.93 11H20a1 1 0 0 1 0 2h-.07A8 8 0 0 1 13 16.93z"></path></svg>
+                    </div>
                     <div class="cert-content">
                       <span class="cert-type">Artificial Intelligence</span>
                       <h4>Prompt Engineering Certification</h4>
@@ -782,7 +788,9 @@
 
                 <div class="col-12">
                   <div class="cert-item reveal reveal-right">
-                    <div class="cert-icon">🥉</div>
+                    <div class="cert-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.45 1-1 1H8c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h8c.55 0 1-.45 1-1v-1c0-.55-.45-1-1-1h-1c-.55 0-1-.45-1-1v-2.34"></path><path d="M18 4H6v7a6 6 0 0 0 12 0V4z"></path></svg>
+                    </div>
                     <div class="cert-content">
                       <span class="cert-type">Competition Award</span>
                       <h4>Third Place &mdash; Codex Competition</h4>
@@ -793,9 +801,11 @@
 
                 <div class="col-12">
                   <div class="cert-item reveal reveal-right">
-                    <div class="cert-icon">🚀</div>
+                    <div class="cert-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    </div>
                     <div class="cert-content">
-                      <span class="cert-type">Hackathon / Jam</span>
+                      <span class="cert-type">Hackathon</span>
                       <h4>Participant &mdash; Hebron Code Jam</h4>
                       <p>2025</p>
                     </div>
@@ -804,7 +814,9 @@
 
                 <div class="col-12">
                   <div class="cert-item reveal reveal-right">
-                    <div class="cert-icon">☁️</div>
+                    <div class="cert-icon-wrap">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                    </div>
                     <div class="cert-content">
                       <span class="cert-type">Cloud Computing</span>
                       <h4>AWS Cloud Training Course</h4>
@@ -823,16 +835,16 @@
         <div class="container">
           <div class="contact-box reveal reveal-up">
             <span class="section-tag">Let's Connect</span>
-            <h2 class="contact-title">Have a project, role, or collaboration in mind?</h2>
+            <h2 class="contact-title">Have an engineering role or project in mind?</h2>
             <p class="contact-subtitle">
-              I’m available for full-time software engineering roles, full-stack development contracts, and challenging technical projects. Feel free to reach out directly.
+              I’m available for full-time software engineering opportunities, full-stack builds, and technical collaborations.
             </p>
 
             <!-- Quick Contacts Grid -->
             <div class="contact-cards-grid">
               <a class="contact-direct-card" href="mailto:mohammadabushehada2@gmail.com">
                 <div class="direct-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 </div>
                 <div class="direct-info">
                   <span class="direct-label">Email</span>
@@ -842,17 +854,17 @@
 
               <a class="contact-direct-card" href="tel:+972567895035">
                 <div class="direct-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                 </div>
                 <div class="direct-info">
-                  <span class="direct-label">Phone / WhatsApp</span>
+                  <span class="direct-label">Phone</span>
                   <span class="direct-value">+972 56 789 5035</span>
                 </div>
               </a>
 
               <a class="contact-direct-card" href="https://www.linkedin.com/in/mohammad-abushehada/" target="_blank" rel="noreferrer">
                 <div class="direct-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 </div>
                 <div class="direct-info">
                   <span class="direct-label">LinkedIn</span>
@@ -862,7 +874,7 @@
 
               <a class="contact-direct-card" href="https://github.com/Mohammad-AbuShehada" target="_blank" rel="noreferrer">
                 <div class="direct-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                 </div>
                 <div class="direct-info">
                   <span class="direct-label">GitHub</span>
@@ -895,7 +907,7 @@
                 <div class="col-12">
                   <div class="form-group">
                     <label class="form-label" for="contact-message">Your Message</label>
-                    <textarea class="form-input form-textarea" id="contact-message" name="message" rows="5" placeholder="Let's build something together..." required></textarea>
+                    <textarea class="form-input form-textarea" id="contact-message" name="message" rows="5" placeholder="Let's discuss a role or project..." required></textarea>
                   </div>
                 </div>
                 <div class="col-12 text-center">

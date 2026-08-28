@@ -1,11 +1,12 @@
 /* ==========================================================================
    MOHAMMAD ABUSHEHADA — PORTFOLIO STYLES
    Modern, High-Performance, Dual Theme (Dark / Light)
+   Interactive Preloader, Custom Cursor, Vector SVGs & Clean Typography
    ========================================================================== */
 
 /* --- CSS Variables & Design Tokens --- */
 :root {
-  --bg: #0b1118;
+  --bg: #0c1219;
   --bg-subtle: #111a24;
   --surface: rgba(18, 28, 40, 0.65);
   --surface-strong: rgba(25, 39, 56, 0.85);
@@ -22,8 +23,8 @@
   --shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.45);
   --shadow-hover: 0 24px 48px -10px rgba(0, 0, 0, 0.65), 0 0 24px rgba(212, 163, 115, 0.18);
   
-  --font-display: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-body: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Space Grotesk", "Plus Jakarta Sans", -apple-system, sans-serif;
+  --font-body: "Plus Jakarta Sans", -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
   --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
@@ -37,7 +38,7 @@
 html.light {
   --bg: #f6f3ed;
   --bg-subtle: #ebe6dc;
-  --surface: rgba(255, 255, 255, 0.72);
+  --surface: rgba(255, 255, 255, 0.75);
   --surface-strong: rgba(255, 255, 255, 0.95);
   --surface-card: #ffffff;
   --text: #131920;
@@ -103,6 +104,126 @@ img {
   color: #0b1118;
 }
 
+/* --- Interactive Preloader --- */
+.site-preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s var(--ease-smooth), transform 0.6s var(--ease-smooth), visibility 0.6s;
+}
+
+.site-preloader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+.preloader-content {
+  width: 280px;
+  text-align: center;
+}
+
+.preloader-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent) 0%, #a8764a 100%);
+  color: #0b1118;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 24px rgba(212, 163, 115, 0.35);
+  animation: preloader-pulse 1.8s infinite alternate;
+}
+
+@keyframes preloader-pulse {
+  0% { transform: scale(0.96); box-shadow: 0 4px 16px rgba(212, 163, 115, 0.25); }
+  100% { transform: scale(1.04); box-shadow: 0 10px 30px rgba(212, 163, 115, 0.45); }
+}
+
+.preloader-bar-wrap {
+  width: 100%;
+  height: 4px;
+  background: var(--line-strong);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+}
+
+.preloader-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent) 0%, #e2b78d 100%);
+  border-radius: 999px;
+  transition: width 0.1s linear;
+}
+
+.preloader-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.preloader-percent {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* --- Interactive Custom Cursor --- */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease, transform 0.1s ease;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--accent-border);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+}
+
+body.cursor-hover .cursor-ring {
+  width: 54px;
+  height: 54px;
+  background-color: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+@media (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+}
+
 /* --- Ambient Background Glow & Spotlight --- */
 .ambient-glow {
   position: fixed;
@@ -153,7 +274,7 @@ html.light .cursor-spotlight {
 
 .portfolio-nav {
   padding: 0.95rem 0;
-  background: rgba(11, 17, 24, 0.82);
+  background: rgba(12, 18, 25, 0.82);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--line);
@@ -174,22 +295,23 @@ html.light .portfolio-nav {
   align-items: center;
   gap: 0.75rem;
   font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.22rem;
+  font-weight: 700;
+  font-size: 1.18rem;
   color: var(--text);
+  letter-spacing: -0.01em;
 }
 
 .brand-logo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: 10px;
   background: linear-gradient(135deg, var(--accent) 0%, #a8764a 100%);
   color: #0b1118;
   font-weight: 800;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   letter-spacing: -0.02em;
   box-shadow: 0 4px 12px rgba(212, 163, 115, 0.3);
 }
@@ -197,8 +319,8 @@ html.light .portfolio-nav {
 .navbar-nav .nav-link {
   color: var(--text-muted);
   font-weight: 600;
-  font-size: 0.94rem;
-  padding: 0.5rem 0.85rem !important;
+  font-size: 0.92rem;
+  padding: 0.45rem 0.8rem !important;
   border-radius: var(--radius-sm);
   transition: color 0.25s ease, background-color 0.25s ease;
 }
@@ -212,8 +334,8 @@ html.light .portfolio-nav {
 /* Theme Toggle Button */
 .theme-toggle-btn {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   border: 1px solid var(--line);
   background: var(--surface);
@@ -281,10 +403,10 @@ html.light .navbar-toggler-icon {
 
 /* --- Hero Section --- */
 .hero-section {
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
-  padding-top: 7rem;
+  padding-top: 6.5rem;
   padding-bottom: 4rem;
   position: relative;
 }
@@ -293,15 +415,15 @@ html.light .navbar-toggler-icon {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  padding: 0.45rem 1rem;
+  padding: 0.4rem 0.95rem;
   border-radius: var(--radius-pill);
   background: var(--accent-soft);
   border: 1px solid var(--accent-border);
   color: var(--accent);
   font-family: var(--font-mono);
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.3rem;
 }
 
 .status-dot {
@@ -321,11 +443,11 @@ html.light .navbar-toggler-icon {
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 4.6vw, 3.8rem);
-  font-weight: 800;
-  line-height: 1.12;
-  letter-spacing: -0.025em;
-  margin-bottom: 1.3rem;
+  font-size: clamp(2.35rem, 4.4vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
   color: var(--text);
 }
 
@@ -342,11 +464,11 @@ html.light .gradient-text {
 }
 
 .hero-lead {
-  font-size: 1.12rem;
-  line-height: 1.85;
+  font-size: 1.08rem;
+  line-height: 1.8;
   color: var(--text-muted);
-  max-width: 620px;
-  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-bottom: 1.8rem;
 }
 
 .hero-lead strong {
@@ -357,9 +479,26 @@ html.light .gradient-text {
 .hero-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.85rem;
   flex-wrap: wrap;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.tech-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.hero-tech-tag {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-pill);
 }
 
 /* Buttons */
@@ -369,9 +508,9 @@ html.light .gradient-text {
   justify-content: center;
   gap: 0.55rem;
   font-weight: 700;
-  font-size: 0.96rem;
+  font-size: 0.94rem;
   border-radius: var(--radius-pill);
-  padding: 0.75rem 1.6rem;
+  padding: 0.7rem 1.5rem;
   transition: all 0.25s var(--ease-smooth);
 }
 
@@ -415,38 +554,10 @@ html.light .gradient-text {
   border-color: var(--line);
 }
 
-/* Metrics */
-.hero-metrics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--line);
-}
-
-.metric-card {
-  padding: 0.6rem 0.2rem;
-}
-
-.metric-num {
-  font-family: var(--font-display);
-  font-size: 1.55rem;
-  font-weight: 800;
-  color: var(--accent);
-  line-height: 1;
-}
-
-.metric-desc {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-top: 0.35rem;
-  line-height: 1.45;
-}
-
 /* Portrait Card */
 .portrait-container {
   position: relative;
-  max-width: 370px;
+  max-width: 360px;
   margin-left: auto;
 }
 
@@ -489,7 +600,7 @@ html.light .gradient-text {
   right: 1rem;
   padding: 0.85rem 1rem;
   border-radius: var(--radius-md);
-  background: rgba(11, 17, 24, 0.88);
+  background: rgba(12, 18, 25, 0.9);
   backdrop-filter: blur(12px);
   border: 1px solid var(--line-strong);
 }
@@ -502,20 +613,20 @@ html.light .portrait-badge {
   display: block;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   color: var(--text);
 }
 
 .badge-tech {
   display: block;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--accent);
   font-weight: 600;
 }
 
 /* --- Section Headers --- */
 .section-block {
-  padding: 6rem 0;
+  padding: 5.5rem 0;
   position: relative;
 }
 
@@ -526,8 +637,8 @@ html.light .portrait-badge {
 }
 
 .section-header {
-  max-width: 740px;
-  margin-bottom: 3.2rem;
+  max-width: 720px;
+  margin-bottom: 3rem;
 }
 
 .section-tag {
@@ -535,12 +646,12 @@ html.light .portrait-badge {
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--accent);
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.6rem;
 }
 
 .section-tag::before {
@@ -553,18 +664,18 @@ html.light .portrait-badge {
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(1.85rem, 3.2vw, 2.6rem);
-  font-weight: 800;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
   line-height: 1.2;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: var(--text);
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.75rem;
 }
 
 .section-subtitle {
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   color: var(--text-muted);
-  line-height: 1.8;
+  line-height: 1.75;
   margin: 0;
 }
 
@@ -580,17 +691,17 @@ html.light .portrait-badge {
 
 .glass-title {
   font-family: var(--font-display);
-  font-size: 1.45rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  margin-bottom: 1.1rem;
+  margin-bottom: 1rem;
   color: var(--text);
 }
 
 .glass-box p {
   color: var(--text-muted);
-  font-size: 1.02rem;
-  line-height: 1.85;
-  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.1rem;
 }
 
 .glass-box strong {
@@ -600,36 +711,36 @@ html.light .portrait-badge {
 .about-highlights {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 1.6rem;
+  gap: 0.55rem;
+  margin-top: 1.5rem;
 }
 
 .highlight-chip {
   display: inline-flex;
   align-items: center;
-  padding: 0.4rem 0.85rem;
+  padding: 0.35rem 0.8rem;
   border-radius: var(--radius-pill);
   background: var(--accent-soft);
   border: 1px solid var(--accent-border);
   color: var(--accent);
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   font-weight: 600;
 }
 
 .info-cards-stack {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: 1rem;
 }
 
 .info-card {
   display: flex;
   align-items: flex-start;
-  gap: 1.2rem;
+  gap: 1.1rem;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
-  padding: 1.35rem 1.4rem;
+  padding: 1.3rem 1.4rem;
   backdrop-filter: blur(12px);
   box-shadow: var(--shadow);
   transition: transform 0.25s ease, border-color 0.25s ease;
@@ -641,34 +752,39 @@ html.light .portrait-badge {
 }
 
 .info-icon {
-  font-size: 1.6rem;
-  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent);
   flex-shrink: 0;
-  margin-top: 0.15rem;
 }
 
 .info-title {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--accent);
   font-weight: 600;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
 }
 
 .info-content strong {
   display: block;
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   color: var(--text);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
 }
 
 .info-content small {
   color: var(--text-muted);
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.88rem;
+  line-height: 1.45;
 }
 
 /* --- Timeline Component --- */
@@ -676,8 +792,8 @@ html.light .portrait-badge {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
-  max-width: 900px;
+  gap: 1.5rem;
+  max-width: 880px;
 }
 
 .timeline-wrapper::before {
@@ -699,7 +815,7 @@ html.light .portrait-badge {
 .timeline-marker {
   position: absolute;
   left: 13px;
-  top: 1.7rem;
+  top: 1.6rem;
   width: 16px;
   height: 16px;
   border-radius: 50%;
@@ -713,7 +829,7 @@ html.light .portrait-badge {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  padding: 1.6rem 1.8rem;
+  padding: 1.5rem 1.7rem;
   backdrop-filter: blur(12px);
   box-shadow: var(--shadow);
   transition: transform 0.25s ease, border-color 0.25s ease;
@@ -729,18 +845,18 @@ html.light .portrait-badge {
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.65rem;
 }
 
 .timeline-badge {
   display: inline-block;
-  padding: 0.25rem 0.75rem;
+  padding: 0.25rem 0.7rem;
   border-radius: var(--radius-pill);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.35rem;
 }
 
 .badge-teaching {
@@ -769,60 +885,49 @@ html.light .portrait-badge {
 
 .timeline-role {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 700;
   margin: 0;
   color: var(--text);
 }
 
 .timeline-company {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--accent);
   font-weight: 600;
-  margin-top: 0.15rem;
+  margin-top: 0.1rem;
 }
 
 .timeline-period {
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
   white-space: nowrap;
 }
 
 .timeline-text {
   color: var(--text-muted);
-  font-size: 0.98rem;
-  line-height: 1.75;
-  margin-bottom: 0.8rem;
-}
-
-.timeline-points {
+  font-size: 0.96rem;
+  line-height: 1.7;
   margin: 0;
-  padding-left: 1.2rem;
-  color: var(--text-soft);
-  font-size: 0.94rem;
-}
-
-.timeline-points li {
-  margin-bottom: 0.35rem;
 }
 
 /* --- Project Filters & Cards --- */
 .project-filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 2.5rem;
+  gap: 0.65rem;
+  margin-bottom: 2.2rem;
 }
 
 .filter-tab {
   border: 1px solid var(--line);
   background: var(--surface);
   color: var(--text-muted);
-  padding: 0.6rem 1.25rem;
+  padding: 0.55rem 1.15rem;
   border-radius: var(--radius-pill);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -850,14 +955,14 @@ html.light .portrait-badge {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  padding: 1.8rem;
+  padding: 1.7rem;
   backdrop-filter: blur(14px);
   box-shadow: var(--shadow);
   transition: transform 0.3s var(--ease-smooth), border-color 0.3s var(--ease-smooth), box-shadow 0.3s var(--ease-smooth);
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   border-color: var(--accent-border);
   box-shadow: var(--shadow-hover);
 }
@@ -871,12 +976,12 @@ html.light .portrait-badge {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.85rem;
 }
 
 .project-category-tag {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -888,39 +993,40 @@ html.light .portrait-badge {
 }
 
 .project-stars {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--accent);
   font-weight: 700;
 }
 
 .project-name {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--text);
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.015em;
 }
 
 .project-description {
-  font-size: 0.97rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
-  line-height: 1.75;
-  margin-bottom: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
 }
 
 .project-features-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-bottom: 1.2rem;
+  gap: 0.4rem;
+  margin-bottom: 1.1rem;
 }
 
 .project-features-list span {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-soft);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line);
-  padding: 0.2rem 0.65rem;
+  padding: 0.2rem 0.6rem;
   border-radius: var(--radius-sm);
 }
 
@@ -931,16 +1037,16 @@ html.light .project-features-list span {
 .project-tech-stack {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.45rem;
   margin-top: auto;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.3rem;
 }
 
 .tech-pill {
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 500;
-  padding: 0.35rem 0.7rem;
+  padding: 0.3rem 0.65rem;
   border-radius: var(--radius-pill);
   background: var(--surface-strong);
   border: 1px solid var(--line);
@@ -950,19 +1056,19 @@ html.light .project-features-list span {
 .project-footer {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.7rem;
   flex-wrap: wrap;
-  padding-top: 1.1rem;
+  padding-top: 1rem;
   border-top: 1px solid var(--line);
 }
 
 .btn-project {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 1.1rem;
+  gap: 0.45rem;
+  padding: 0.5rem 1rem;
   border-radius: var(--radius-pill);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 700;
   transition: all 0.2s ease;
 }
@@ -1006,7 +1112,7 @@ html.light .project-features-list span {
 
 .btn-ghost-link {
   color: var(--text-muted);
-  padding: 0.55rem 0.8rem;
+  padding: 0.5rem 0.75rem;
 }
 
 .btn-ghost-link:hover {
@@ -1018,7 +1124,7 @@ html.light .project-features-list span {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  padding: 1.6rem;
+  padding: 1.5rem;
   height: 100%;
   backdrop-filter: blur(12px);
   box-shadow: var(--shadow);
@@ -1034,16 +1140,23 @@ html.light .project-features-list span {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.1rem;
 }
 
-.skill-icon {
-  font-size: 1.5rem;
+.skill-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
 .skill-card-header h3 {
   font-family: var(--font-display);
-  font-size: 1.18rem;
+  font-size: 1.15rem;
   font-weight: 700;
   margin: 0;
   color: var(--text);
@@ -1052,13 +1165,13 @@ html.light .project-features-list span {
 .skill-badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.45rem;
 }
 
 .skill-pill {
-  padding: 0.4rem 0.8rem;
+  padding: 0.35rem 0.75rem;
   border-radius: var(--radius-pill);
-  font-size: 0.85rem;
+  font-size: 0.83rem;
   font-weight: 600;
   background: var(--surface-strong);
   border: 1px solid var(--line);
@@ -1077,7 +1190,7 @@ html.light .project-features-list span {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  padding: 2.2rem;
+  padding: 2rem;
   backdrop-filter: blur(12px);
   box-shadow: var(--shadow);
 }
@@ -1085,41 +1198,42 @@ html.light .project-features-list span {
 .degree-badge {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--accent);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.65rem;
 }
 
 .degree-title {
   font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 800;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--text);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.015em;
 }
 
 .degree-institution {
-  font-size: 1.08rem;
+  font-size: 1.02rem;
   color: var(--text-muted);
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.1rem;
 }
 
 .degree-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.3rem;
 }
 
 .meta-pill {
-  padding: 0.4rem 0.9rem;
+  padding: 0.35rem 0.85rem;
   border-radius: var(--radius-pill);
   background: var(--surface-strong);
   border: 1px solid var(--line);
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   font-weight: 600;
   color: var(--text-soft);
 }
@@ -1131,69 +1245,76 @@ html.light .project-features-list span {
 }
 
 .degree-desc {
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
-  line-height: 1.8;
+  line-height: 1.75;
   margin: 0;
 }
 
 .cert-item {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1.1rem;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
-  padding: 1.1rem 1.4rem;
+  padding: 1rem 1.3rem;
   backdrop-filter: blur(12px);
   box-shadow: var(--shadow);
   transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
 .cert-item:hover {
-  transform: translateX(5px);
+  transform: translateX(4px);
   border-color: var(--accent-border);
 }
 
-.cert-icon {
-  font-size: 1.5rem;
+.cert-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent);
   flex-shrink: 0;
 }
 
 .cert-type {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--accent);
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.1rem;
 }
 
 .cert-content h4 {
   font-family: var(--font-display);
-  font-size: 1.08rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  margin: 0 0 0.15rem 0;
+  margin: 0 0 0.1rem 0;
   color: var(--text);
 }
 
 .cert-content p {
   margin: 0;
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   color: var(--text-muted);
 }
 
 /* --- Contact Section --- */
 .contact-section {
-  padding-bottom: 7rem;
+  padding-bottom: 6.5rem;
 }
 
 .contact-box {
   background: linear-gradient(165deg, rgba(212, 163, 115, 0.09) 0%, var(--surface) 40%);
   border: 1px solid var(--accent-border);
   border-radius: 2rem;
-  padding: 3.5rem 2.5rem;
+  padding: 3.2rem 2.2rem;
   text-align: center;
   backdrop-filter: blur(16px);
   box-shadow: var(--shadow);
@@ -1201,33 +1322,34 @@ html.light .project-features-list span {
 
 .contact-title {
   font-family: var(--font-display);
-  font-size: clamp(1.9rem, 3.4vw, 2.8rem);
-  font-weight: 800;
+  font-size: clamp(1.85rem, 3.2vw, 2.7rem);
+  font-weight: 700;
   color: var(--text);
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
 }
 
 .contact-subtitle {
-  max-width: 640px;
-  margin: 0 auto 2.5rem;
-  font-size: 1.05rem;
+  max-width: 620px;
+  margin: 0 auto 2.2rem;
+  font-size: 1.02rem;
   color: var(--text-muted);
-  line-height: 1.8;
+  line-height: 1.75;
 }
 
 .contact-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  max-width: 960px;
-  margin: 0 auto 2.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.9rem;
+  max-width: 940px;
+  margin: 0 auto 2.6rem;
 }
 
 .contact-direct-card {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.2rem;
+  gap: 0.95rem;
+  padding: 0.95rem 1.15rem;
   border-radius: var(--radius-md);
   background: var(--surface);
   border: 1px solid var(--line);
@@ -1245,9 +1367,9 @@ html.light .project-features-list span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
   background: var(--accent-soft);
   color: var(--accent);
   flex-shrink: 0;
@@ -1264,28 +1386,28 @@ html.light .project-features-list span {
 
 .direct-value {
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: var(--text);
   word-break: break-all;
 }
 
 .contact-form-modern {
-  max-width: 720px;
+  max-width: 700px;
   margin: 0 auto;
   text-align: left;
 }
 
 .form-group {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.3rem;
 }
 
 .form-label {
   display: block;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 700;
   color: var(--text);
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.4rem;
 }
 
 .form-input {
@@ -1293,9 +1415,9 @@ html.light .project-features-list span {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
-  padding: 0.85rem 1.15rem;
+  padding: 0.8rem 1.1rem;
   font-family: var(--font-body);
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   color: var(--text);
   outline: none;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
@@ -1313,7 +1435,7 @@ html.light .project-features-list span {
 }
 
 .form-textarea {
-  min-height: 130px;
+  min-height: 120px;
   resize: vertical;
 }
 
@@ -1323,15 +1445,15 @@ html.light .project-features-list span {
 
 .submit-btn {
   margin-top: 0.5rem;
-  min-width: 200px;
+  min-width: 190px;
 }
 
 .form-feedback {
-  max-width: 720px;
+  max-width: 700px;
   margin: 1.2rem auto 0;
-  padding: 0.9rem 1.2rem;
+  padding: 0.85rem 1.15rem;
   border-radius: var(--radius-md);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   display: none;
 }
 
@@ -1353,10 +1475,10 @@ html.light .project-features-list span {
 
 /* --- Footer --- */
 .portfolio-footer {
-  padding: 2.2rem 0;
+  padding: 2rem 0;
   border-top: 1px solid var(--line);
   background: var(--bg-subtle);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
 }
 
@@ -1376,21 +1498,21 @@ html.light .project-features-list span {
 /* --- Animations & Reveals --- */
 .reveal {
   opacity: 0;
-  transform: translate3d(0, 30px, 0);
-  transition: opacity 0.7s var(--ease-smooth), transform 0.7s var(--ease-smooth);
+  transform: translate3d(0, 25px, 0);
+  transition: opacity 0.65s var(--ease-smooth), transform 0.65s var(--ease-smooth);
   will-change: opacity, transform;
 }
 
 .reveal-up {
-  transform: translate3d(0, 30px, 0);
+  transform: translate3d(0, 25px, 0);
 }
 
 .reveal-left {
-  transform: translate3d(-35px, 0, 0);
+  transform: translate3d(-30px, 0, 0);
 }
 
 .reveal-right {
-  transform: translate3d(35px, 0, 0);
+  transform: translate3d(30px, 0, 0);
 }
 
 .reveal.is-visible {
@@ -1401,7 +1523,7 @@ html.light .project-features-list span {
 /* --- Responsive Breakpoints --- */
 @media (max-width: 991.98px) {
   .hero-section {
-    padding-top: 6rem;
+    padding-top: 5.5rem;
     text-align: center;
   }
 
@@ -1419,10 +1541,8 @@ html.light .project-features-list span {
     justify-content: center;
   }
 
-  .hero-metrics {
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+  .tech-pills-row {
+    justify-content: center;
   }
 
   .portrait-container {
@@ -1440,16 +1560,11 @@ html.light .project-features-list span {
 
 @media (max-width: 767.98px) {
   .section-block {
-    padding: 4.5rem 0;
+    padding: 4rem 0;
   }
 
   .hero-title {
-    font-size: 2.15rem;
-  }
-
-  .hero-metrics {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
+    font-size: 2.1rem;
   }
 
   .timeline-wrapper::before {
@@ -1457,7 +1572,7 @@ html.light .project-features-list span {
   }
 
   .timeline-item {
-    padding-left: 2.6rem;
+    padding-left: 2.5rem;
   }
 
   .timeline-marker {
@@ -1470,7 +1585,7 @@ html.light .project-features-list span {
   }
 
   .contact-box {
-    padding: 2.5rem 1.4rem;
+    padding: 2.2rem 1.3rem;
   }
 
   .contact-cards-grid {
