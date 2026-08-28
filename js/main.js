@@ -1,18 +1,33 @@
 /**
  * MOHAMMAD ABUSHEHADA — PORTFOLIO JAVASCRIPT
- * Interactive 0-100% Preloader, Custom Cursor, Spotlight Glow, Theme Toggle & Filters
+ * Interactive 0-100% Preloader + Enter Button, Smart Cursor with Labels, 3D Tilt Cards & Theme Toggle
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ─── 1. INTERACTIVE PRELOADER (0% -> 100%) ──────────────────────
+  // ─── 1. INTERACTIVE PRELOADER (0% -> 100% + ENTER BUTTON) ─────────
   const preloader = document.getElementById("site-preloader");
   const preloaderBar = document.getElementById("preloader-bar");
   const preloaderPercent = document.getElementById("preloader-percent");
+  const preloaderStatusRow = document.getElementById("preloader-status-row");
+  const preloaderEnterBtn = document.getElementById("preloader-enter-btn");
+
+  function enterPortfolio() {
+    if (!preloader || preloader.classList.contains("loaded")) return;
+    preloader.classList.add("loaded");
+
+    // Sequential reveal for hero elements
+    const heroReveals = document.querySelectorAll(".hero-section .reveal");
+    heroReveals.forEach((el, index) => {
+      setTimeout(() => {
+        el.classList.add("is-visible");
+      }, index * 120);
+    });
+  }
 
   if (preloader && preloaderBar && preloaderPercent) {
     let progress = 0;
     const interval = setInterval(() => {
-      progress += Math.floor(Math.random() * 8) + 4;
+      progress += Math.floor(Math.random() * 9) + 5;
       if (progress >= 100) {
         progress = 100;
         clearInterval(interval);
@@ -20,22 +35,34 @@ document.addEventListener("DOMContentLoaded", () => {
         preloaderPercent.textContent = "100%";
 
         setTimeout(() => {
-          preloader.classList.add("loaded");
-          // Trigger visible reveal animations for hero section
-          document.querySelectorAll(".hero-section .reveal").forEach((el) => {
-            el.classList.add("is-visible");
-          });
-        }, 300);
+          if (preloaderStatusRow) preloaderStatusRow.style.opacity = "0";
+          if (preloaderEnterBtn) {
+            preloaderEnterBtn.classList.add("is-visible");
+            preloaderEnterBtn.focus();
+          }
+        }, 200);
       } else {
         preloaderBar.style.width = `${progress}%`;
         preloaderPercent.textContent = `${progress}%`;
       }
-    }, 28);
+    }, 24);
+
+    if (preloaderEnterBtn) {
+      preloaderEnterBtn.addEventListener("click", enterPortfolio);
+    }
+
+    // Keyboard trigger (Enter or Space)
+    window.addEventListener("keydown", (e) => {
+      if ((e.key === "Enter" || e.key === " ") && preloaderEnterBtn && preloaderEnterBtn.classList.contains("is-visible")) {
+        enterPortfolio();
+      }
+    });
   }
 
-  // ─── 2. INTERACTIVE CUSTOM CURSOR ──────────────────────────────
+  // ─── 2. INTERACTIVE SMART CURSOR WITH LABELS ──────────────────────
   const cursorDot = document.getElementById("cursor-dot");
   const cursorRing = document.getElementById("cursor-ring");
+  const cursorLabel = document.getElementById("cursor-label");
 
   if (cursorDot && cursorRing && window.matchMedia("(pointer: fine)").matches) {
     let mouseX = window.innerWidth / 2;
@@ -75,22 +102,53 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     requestAnimationFrame(updateCursorRing);
 
-    // Hover effect on interactive elements
+    // Dynamic contextual cursor hover labels
     const interactiveElements = document.querySelectorAll(
-      "a, button, input, textarea, .project-card, .skill-card, .info-card, .cert-item, .filter-tab"
+      "a, button, input, textarea, .project-card, .skill-card, .info-card, .cert-item, .filter-tab, .theme-toggle-btn"
     );
 
     interactiveElements.forEach((el) => {
       el.addEventListener("mouseenter", () => {
         document.body.classList.add("cursor-hover");
+        const customLabel = el.getAttribute("data-cursor");
+        if (customLabel && cursorLabel) {
+          cursorLabel.textContent = customLabel;
+          document.body.classList.add("has-label");
+        }
       });
+
       el.addEventListener("mouseleave", () => {
         document.body.classList.remove("cursor-hover");
+        document.body.classList.remove("has-label");
+        if (cursorLabel) cursorLabel.textContent = "";
       });
     });
   }
 
-  // ─── 3. THEME SWITCHER (Dark / Light) ──────────────────────────
+  // ─── 3. 3D CARD TILT EFFECT (60fps Lightweight) ───────────────────
+  const tiltCards = document.querySelectorAll(".js-tilt-card");
+  if (window.matchMedia("(pointer: fine)").matches) {
+    tiltCards.forEach((card) => {
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -7;
+        const rotateY = ((x - centerX) / centerX) * 7;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      });
+
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)";
+      });
+    });
+  }
+
+  // ─── 4. THEME SWITCHER (Dark / Light) ──────────────────────────
   const themeToggleBtn = document.getElementById("theme-toggle");
   const htmlRoot = document.documentElement;
 
@@ -126,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initTheme();
 
-  // ─── 4. MOUSE SPOTLIGHT GLOW ───────────────────────────────────
+  // ─── 5. MOUSE SPOTLIGHT GLOW ───────────────────────────────────
   const spotlight = document.getElementById("cursor-spotlight");
   if (spotlight && window.matchMedia("(pointer: fine)").matches) {
     let spotMouseX = window.innerWidth / 2;
@@ -158,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(renderSpotlight);
   }
 
-  // ─── 5. NAVBAR SCROLL & MOBILE CLOSE ───────────────────────────
+  // ─── 6. NAVBAR SCROLL & MOBILE CLOSE ───────────────────────────
   const navbar = document.getElementById("main-navbar");
   const navCollapse = document.getElementById("mainNav");
   const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
@@ -182,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ─── 6. INTERSECTION OBSERVER REVEALS ──────────────────────────
+  // ─── 7. INTERSECTION OBSERVER REVEALS ──────────────────────────
   const reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
     const revealObserver = new IntersectionObserver(
@@ -205,7 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
     reveals.forEach((item) => item.classList.add("is-visible"));
   }
 
-  // ─── 7. PROJECT CATEGORY FILTERING ────────────────────────────
+  // ─── 8. PROJECT CATEGORY FILTERING ────────────────────────────
   const filterTabs = document.querySelectorAll(".filter-tab");
   const projectItems = document.querySelectorAll(".project-item");
 
@@ -231,7 +289,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ─── 8. CONTACT FORM ASYNC SUBMISSION ──────────────────────────
+  // ─── 9. CONTACT FORM ASYNC SUBMISSION ──────────────────────────
   const contactForm = document.getElementById("contact-form");
   const formStatus = document.getElementById("form-status");
 

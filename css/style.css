@@ -1,7 +1,7 @@
 /* ==========================================================================
    MOHAMMAD ABUSHEHADA — PORTFOLIO STYLES
    Modern, High-Performance, Dual Theme (Dark / Light)
-   Interactive Preloader, Custom Cursor, Vector SVGs & Clean Typography
+   Interactive Preloader Button, 3D Tilt Cards, Smart Cursor & Clean Typography
    ========================================================================== */
 
 /* --- CSS Variables & Design Tokens --- */
@@ -104,7 +104,7 @@ img {
   color: #0b1118;
 }
 
-/* --- Interactive Preloader --- */
+/* --- Interactive Preloader & Experience Enter --- */
 .site-preloader {
   position: fixed;
   inset: 0;
@@ -113,33 +113,36 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.6s var(--ease-smooth), transform 0.6s var(--ease-smooth), visibility 0.6s;
+  transition: opacity 0.7s var(--ease-smooth), transform 0.7s var(--ease-smooth), visibility 0.7s;
 }
 
 .site-preloader.loaded {
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-20px);
+  transform: translateY(-40px) scale(0.98);
   pointer-events: none;
 }
 
 .preloader-content {
-  width: 280px;
+  width: 300px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .preloader-logo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
   background: linear-gradient(135deg, var(--accent) 0%, #a8764a 100%);
   color: #0b1118;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   margin-bottom: 1.5rem;
   box-shadow: 0 8px 24px rgba(212, 163, 115, 0.35);
   animation: preloader-pulse 1.8s infinite alternate;
@@ -147,7 +150,7 @@ img {
 
 @keyframes preloader-pulse {
   0% { transform: scale(0.96); box-shadow: 0 4px 16px rgba(212, 163, 115, 0.25); }
-  100% { transform: scale(1.04); box-shadow: 0 10px 30px rgba(212, 163, 115, 0.45); }
+  100% { transform: scale(1.05); box-shadow: 0 12px 32px rgba(212, 163, 115, 0.5); }
 }
 
 .preloader-bar-wrap {
@@ -164,16 +167,18 @@ img {
   width: 0%;
   background: linear-gradient(90deg, var(--accent) 0%, #e2b78d 100%);
   border-radius: 999px;
-  transition: width 0.1s linear;
+  transition: width 0.08s linear;
 }
 
 .preloader-status {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
+  transition: opacity 0.3s ease;
 }
 
 .preloader-percent {
@@ -181,7 +186,40 @@ img {
   font-weight: 700;
 }
 
-/* --- Interactive Custom Cursor --- */
+/* Enter Experience Button (at 100%) */
+.preloader-enter-btn {
+  display: none;
+  margin-top: 1.2rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--accent) 0%, #b88050 100%);
+  border: 1px solid transparent;
+  color: #0b1118;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.98rem;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(212, 163, 115, 0.4);
+  animation: enter-btn-fade 0.4s var(--ease-smooth) forwards, enter-btn-glow 2s infinite alternate;
+}
+
+.preloader-enter-btn.is-visible {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+@keyframes enter-btn-fade {
+  from { opacity: 0; transform: translateY(10px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes enter-btn-glow {
+  0% { box-shadow: 0 4px 16px rgba(212, 163, 115, 0.35); }
+  100% { box-shadow: 0 8px 28px rgba(212, 163, 115, 0.65); transform: translateY(-2px); }
+}
+
+/* --- Interactive Custom Cursor with Smart Label --- */
 .cursor-dot {
   position: fixed;
   top: 0;
@@ -207,14 +245,39 @@ img {
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.3s var(--ease-smooth), height 0.3s var(--ease-smooth), background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease, border-radius 0.3s ease;
+}
+
+.cursor-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #0b1118;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+  pointer-events: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 body.cursor-hover .cursor-ring {
-  width: 54px;
-  height: 54px;
-  background-color: var(--accent-soft);
+  width: 58px;
+  height: 58px;
+  background-color: var(--accent);
   border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(212, 163, 115, 0.5);
+}
+
+body.cursor-hover .cursor-dot {
+  opacity: 0;
+}
+
+body.cursor-hover.has-label .cursor-label {
+  opacity: 1;
 }
 
 @media (pointer: coarse) {
@@ -552,6 +615,13 @@ html.light .gradient-text {
   color: var(--text);
   background: var(--surface);
   border-color: var(--line);
+}
+
+/* 3D Tilt Card Component */
+.js-tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+  will-change: transform;
 }
 
 /* Portrait Card */
@@ -962,7 +1032,6 @@ html.light .portrait-badge {
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
   border-color: var(--accent-border);
   box-shadow: var(--shadow-hover);
 }
@@ -1132,7 +1201,6 @@ html.light .project-features-list span {
 }
 
 .skill-card:hover {
-  transform: translateY(-4px);
   border-color: var(--accent-border);
 }
 
