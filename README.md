@@ -48,9 +48,12 @@ portfolio/
 ├── css/
 │   └── style.css          # Core design tokens, dual theme, animations & responsive rules
 ├── js/
-│   └── main.js            # Preloader, custom cursor, 3D tilt, filters & form handling
+│   └── main.js            # Preloader, constellation canvas, 3D tilt, filters & form handling
 ├── img/
+│   ├── favicon.svg        # Modern vector favicon
+│   ├── logo.svg           # Geometric brand logo
 │   └── mohammad_abushehada.png
+├── Mohammad_Abushehada_CV.pdf # Direct download curriculum vitae
 ├── index.html             # Semantic portfolio layout & structure
 └── README.md              # Project documentation
 ```
@@ -59,6 +62,7 @@ portfolio/
 
 ## 📬 Contact & Connect
 
+- **Resume / CV:** [View Mohammad Abushehada CV (PDF)](Mohammad_Abushehada_CV.pdf)
 - **LinkedIn:** [linkedin.com/in/mohammad-abushehada](https://www.linkedin.com/in/mohammad-abushehada/)
 - **GitHub:** [github.com/Mohammad-AbuShehada](https://github.com/Mohammad-AbuShehada)
 - **Email:** [mohammadabushehada2@gmail.com](mailto:mohammadabushehada2@gmail.com)

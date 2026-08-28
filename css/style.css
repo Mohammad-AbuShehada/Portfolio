@@ -630,6 +630,116 @@ html.light .gradient-text {
   border-color: var(--line);
 }
 
+.btn-cv-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.95rem;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: all 0.25s var(--ease-smooth);
+}
+
+.btn-cv-nav:hover {
+  background: var(--accent);
+  color: #0b1118;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(212, 163, 115, 0.35);
+}
+
+.btn-cv-hero {
+  background: rgba(212, 163, 115, 0.16);
+  border: 1px solid var(--accent-border);
+  color: var(--text);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn-cv-hero:hover {
+  background: var(--accent);
+  color: #0b1118;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212, 163, 115, 0.4);
+}
+
+/* Interactive Metrics Strip (0 -> 100% Counters) */
+.interactive-metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.metric-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 0.95rem 1rem;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.metric-item:hover {
+  border-color: var(--accent-border);
+}
+
+.metric-number-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 0.15rem;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.metric-suffix {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.metric-label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+}
+
+.metric-bar {
+  width: 100%;
+  height: 3px;
+  background: var(--line-strong);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.metric-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent) 0%, #e2b78d 100%);
+  border-radius: 999px;
+  transition: width 1.4s var(--ease-smooth);
+}
+
+@media (max-width: 575.98px) {
+  .interactive-metrics-strip {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+}
+
 /* 3D Tilt Card Component */
 .js-tilt-card {
   position: relative;

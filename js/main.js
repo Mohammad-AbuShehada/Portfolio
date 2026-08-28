@@ -537,4 +537,54 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }, { passive: true });
+
+  // ─── 15. LIVE METRICS COUNTER (0 -> 100%) ──────────────────────
+  const counterElements = document.querySelectorAll(".js-counter");
+  const fillElements = document.querySelectorAll(".metric-fill");
+
+  function animateCounters() {
+    counterElements.forEach((counter) => {
+      const target = parseInt(counter.dataset.target, 10) || 100;
+      let current = 0;
+      const duration = 1200;
+      const stepTime = 16;
+      const totalSteps = duration / stepTime;
+      const increment = target / totalSteps;
+
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          counter.textContent = target;
+          clearInterval(timer);
+        } else {
+          counter.textContent = Math.floor(current);
+        }
+      }, stepTime);
+    });
+
+    fillElements.forEach((fill) => {
+      const width = fill.dataset.width || "100%";
+      fill.style.width = width;
+    });
+  }
+
+  const metricsStrip = document.querySelector(".interactive-metrics-strip");
+  if (metricsStrip && "IntersectionObserver" in window) {
+    let triggered = false;
+    const metricsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !triggered) {
+            triggered = true;
+            animateCounters();
+            metricsObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    metricsObserver.observe(metricsStrip);
+  } else {
+    animateCounters();
+  }
 });
